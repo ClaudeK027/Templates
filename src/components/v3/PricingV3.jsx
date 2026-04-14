@@ -62,7 +62,7 @@ export default function PricingV3() {
   }, []);
 
   return (
-    <section id="pricing" style={{ padding: '160px 0', background: '#ffffff', overflow: 'hidden' }}>
+    <section id="pricing" style={{ padding: 'clamp(80px, 12vw, 160px) 0', background: '#ffffff', overflow: 'hidden' }}>
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
@@ -73,7 +73,7 @@ export default function PricingV3() {
         }
       `}</style>
       
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 32px)' }}>
         
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h2
@@ -105,7 +105,7 @@ export default function PricingV3() {
             }}
           >
             {/* Background Highlight Glow */}
-            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', background: 'rgba(16,185,129,0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', maxWidth: '600px', aspectRatio: '1', background: 'rgba(16,185,129,0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none' }} />
 
             {/* LEFT: Gratuit (Scaled Down/Faded) */}
             <motion.div

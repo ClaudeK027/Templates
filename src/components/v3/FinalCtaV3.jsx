@@ -4,7 +4,7 @@ import CtaButton from '@/components/common/CtaButton';
 
 export default function FinalCtaV3() {
   return (
-    <section style={{ padding: '160px 0', background: '#0F172A', overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <section style={{ padding: 'clamp(80px, 12vw, 160px) 0', background: '#0F172A', overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       
       {/* Pulsar Animating Rings */}
       <motion.div
@@ -23,7 +23,7 @@ export default function FinalCtaV3() {
         transition={{ duration: 4, repeat: Infinity, ease: 'linear', delay: 2.6 }}
       />
 
-      <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 32px', textAlign: 'center' }}>
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 32px)', textAlign: 'center' }}>
         <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
           <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px' }}>
             <Zap style={{ color: '#10B981' }} size={32} />

@@ -105,8 +105,8 @@ export default function PricingV2() {
         </div>
 
         {/* Structural Pricing Matrix Table (Visible only on desktop) */}
-        <div className="hidden lg:block overflow-x-auto bg-[#F8FAFC] border border-[#CBD5E1] rounded w-full no-scrollbar">
-          <div className="min-w-[800px] w-full">
+        <div className="hidden lg:block bg-[#F8FAFC] border border-[#CBD5E1] rounded w-full">
+          <div style={{ width: '100%' }}>
           
           {/* Table Header (Plans) */}
           <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', background: '#ffffff', borderBottom: '2px solid #0F172A' }}>

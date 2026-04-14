@@ -6,11 +6,11 @@ export default function FeaturesV3() {
   const allFeatures = [...creatorBenefits, ...brandBenefits].slice(0, 5);
 
   return (
-    <section id="features" style={{ padding: '120px 0', background: '#0F172A', position: 'relative' }}>
+    <section id="features" style={{ padding: 'clamp(64px, 10vw, 120px) 0', background: '#0F172A', position: 'relative', overflow: 'hidden' }}>
       <div id="brands" style={{ position: 'absolute', top: -80 }} />
       <div id="creators" style={{ position: 'absolute', top: -80 }} />
       
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 32px)' }}>
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <motion.h2
             style={{

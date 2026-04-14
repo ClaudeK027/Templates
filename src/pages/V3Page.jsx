@@ -13,7 +13,7 @@ import FinalCtaV3 from '@/components/v3/FinalCtaV3';
 
 export default function V3Page() {
   return (
-    <div className="font-poppins">
+    <div className="font-poppins" style={{ overflowX: 'hidden' }}>
       <Navbar variant="v3" />
       <HeroV3 />
       <NetworksV3 />

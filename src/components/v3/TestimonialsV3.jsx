@@ -3,7 +3,7 @@ import { testimonials } from '@/data/content';
 
 export default function TestimonialsV3() {
   return (
-    <section style={{ padding: '120px 0', background: '#FAF9F6', overflow: 'hidden', position: 'relative' }}>
+    <section style={{ padding: 'clamp(64px, 10vw, 120px) 0', background: '#FAF9F6', overflow: 'hidden', position: 'relative' }}>
       
       {/* Subtle floating background elements */}
       <motion.div 
@@ -17,7 +17,7 @@ export default function TestimonialsV3() {
          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
       />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 32px)', position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <motion.h2
             style={{

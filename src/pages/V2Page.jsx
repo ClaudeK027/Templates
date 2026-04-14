@@ -13,7 +13,7 @@ import FinalCtaV2 from '@/components/v2/FinalCtaV2';
 
 export default function V2Page() {
   return (
-    <div className="font-inter">
+    <div className="font-inter" style={{ overflowX: 'hidden' }}>
       <Navbar variant="v2" />
       <div className="v2-sections" style={{ display: 'flex', flexDirection: 'column' }}>
         <HeroV2 />

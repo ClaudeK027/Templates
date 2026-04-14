@@ -146,8 +146,8 @@ export default function HowItWorksV3() {
   const steps = stepsBrand;
 
   return (
-    <section id="how-it-works" style={{ padding: '120px 0', background: '#ffffff', position: 'relative' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
+    <section id="how-it-works" style={{ padding: 'clamp(64px, 10vw, 120px) 0', background: '#ffffff', position: 'relative' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 32px)' }}>
         
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h2
@@ -237,7 +237,7 @@ export default function HowItWorksV3() {
                         transition={{ duration: 0.4, delay: 0.1 }}
                         style={{
                           marginTop: '20px',
-                          marginLeft: '80px', // Align with text naturally
+                          marginLeft: 'clamp(0px, 10vw, 80px)',
                           background: '#F8FAFC',
                           borderRadius: '20px',
                           border: '1px solid #E2E8F0',

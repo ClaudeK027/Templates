@@ -98,17 +98,15 @@ export default function HeroV2() {
           </div>
 
           {/* RIGHT: Data Dashboard Interface (Structurally responsive mockup) */}
-          <div className="relative w-full h-[320px] sm:h-[450px] lg:h-[600px] mt-8 lg:mt-0 overflow-hidden lg:overflow-visible flex justify-center lg:block">
+          <div style={{ width: '100%', marginTop: '32px' }} className="lg:mt-0">
             <motion.div
-               className="origin-top lg:origin-top-right transform scale-[0.5] sm:scale-[0.7] lg:scale-100"
-               style={{ 
-                 position: 'absolute', 
-                 top: '0%', 
-                 lg: { top: '10%' },
-                 width: '700px', 
-                 height: '600px', 
-                 background: '#ffffff', 
-                 border: '1px solid #CBD5E1', 
+               style={{
+                 width: '100%',
+                 maxWidth: '700px',
+                 margin: '0 auto',
+                 aspectRatio: '7 / 6',
+                 background: '#ffffff',
+                 border: '1px solid #CBD5E1',
                  borderRadius: '4px',
                  boxShadow: '0 24px 48px rgba(15,23,42,0.05)',
                  display: 'flex',

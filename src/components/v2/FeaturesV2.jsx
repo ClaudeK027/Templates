@@ -11,11 +11,11 @@ export default function FeaturesV2() {
       
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '80px', paddingBottom: '24px', borderBottom: '2px solid #0F172A' }}>
-          <div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '24px', marginBottom: 'clamp(48px, 7vw, 80px)', paddingBottom: '24px', borderBottom: '2px solid #0F172A' }}>
+          <div style={{ flex: '1 1 300px' }}>
             <h2
               style={{
-                fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+                fontSize: 'clamp(1.6rem, 3vw, 2.5rem)',
                 fontWeight: 800,
                 fontFamily: "'Inter', sans-serif",
                 color: '#0F172A',
@@ -25,11 +25,11 @@ export default function FeaturesV2() {
             >
               Capacités d'infrastructures.
             </h2>
-            <p style={{ fontSize: '16px', color: '#64748B', maxWidth: '600px', margin: 0, fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: 'clamp(14px, 1.5vw, 16px)', color: '#64748B', maxWidth: '600px', margin: 0, fontFamily: "'Inter', sans-serif" }}>
               Des modules conçus pour répondre aux plus hautes exigences B2B.
             </p>
           </div>
-          <button style={{ background: 'transparent', border: '1px solid #0F172A', borderRadius: '2px', padding: '10px 24px', fontSize: '12px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontFamily: "'Inter', sans-serif" }}>
+          <button style={{ background: 'transparent', border: '1px solid #0F172A', borderRadius: '2px', padding: '10px 24px', fontSize: '12px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontFamily: "'Inter', sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>
             Documentation Technique <ArrowRight size={14} />
           </button>
         </div>

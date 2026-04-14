@@ -100,15 +100,14 @@ export default function HeroV3() {
           </div>
 
           {/* RIGHT: Abstract Isomorphic / Floating UI */}
-          <div className="relative w-full flex items-center justify-center scale-75 lg:scale-100 origin-center mt-[-40px] lg:mt-0" style={{ perspective: '1000px', height: '600px', flex: '1 1 500px' }}>
-            
+          <div className="relative w-full flex items-center justify-center origin-center" style={{ perspective: '1000px', height: 'clamp(400px, 60vw, 600px)', flex: '1 1 500px', overflow: 'hidden' }}>
+
             <motion.div
-              style={{ position: 'absolute', top: '5%', zIndex: 10 }}
-              className="right-[5%] lg:right-[5%]"
+              style={{ position: 'absolute', top: '5%', right: '5%', zIndex: 10 }}
               animate={{ y: [-10, 10, -10] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
             >
-              <div style={{ padding: '20px', borderRadius: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.5)', boxShadow: '0 24px 48px rgba(0,0,0,0.08)', width: '280px' }}>
+              <div style={{ padding: 'clamp(14px, 2vw, 20px)', borderRadius: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.5)', boxShadow: '0 24px 48px rgba(0,0,0,0.08)', width: 'clamp(220px, 40vw, 280px)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                   <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#F8FAFC', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>👩🏾‍🦱</div>
                   <div>
@@ -126,12 +125,11 @@ export default function HeroV3() {
             </motion.div>
 
             <motion.div
-              style={{ position: 'absolute', top: '35%', zIndex: 20 }}
-              className="left-[0%] lg:-left-[10%]"
+              style={{ position: 'absolute', top: '35%', left: '0%', zIndex: 20 }}
               animate={{ y: [10, -10, 10] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
             >
-               <div style={{ padding: '24px', borderRadius: '24px', background: '#0F172A', color: 'white', boxShadow: '0 32px 64px rgba(15,23,42,0.2)', width: '320px' }}>
+               <div style={{ padding: 'clamp(16px, 2.5vw, 24px)', borderRadius: '24px', background: '#0F172A', color: 'white', boxShadow: '0 32px 64px rgba(15,23,42,0.2)', width: 'clamp(240px, 45vw, 320px)' }}>
                   <p style={{ margin: '0 0 12px', fontSize: '12px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Campagne Active</p>
                   <h3 style={{ margin: '0 0 8px', fontSize: '20px', fontWeight: 700 }}>Lancement Été '26</h3>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '20px' }}>
@@ -150,8 +148,7 @@ export default function HeroV3() {
             </motion.div>
 
             <motion.div
-              style={{ position: 'absolute', zIndex: 15 }}
-              className="bottom-[5%] lg:bottom-[15%] right-[5%] lg:right-[15%]"
+              style={{ position: 'absolute', bottom: '10%', right: '5%', zIndex: 15 }}
               animate={{ y: [-15, 15, -15], rotate: [0, -2, 0] }}
               transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 2 }}
             >
