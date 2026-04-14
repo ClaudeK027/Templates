@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import SectionTitle from '../common/SectionTitle';
-import FeatureCard from '../common/FeatureCard';
-import { creatorBenefits, brandBenefits } from '../../data/content';
+import SectionTitle from '@/components/common/SectionTitle';
+import FeatureCard from '@/components/common/FeatureCard';
+import { creatorBenefits, brandBenefits } from '@/data/content';
 
 export default function FeaturesV1() {
   const [activeTab, setActiveTab] = useState('creator');
   const benefits = activeTab === 'creator' ? creatorBenefits : brandBenefits;
 
   return (
-    <section id="creators" className="py-20 lg:py-28 bg-v1-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="creators" style={{ background: '#FFFBF5', position: 'relative', padding: 'clamp(64px, 10vw, 120px) clamp(20px, 5vw, 40px) clamp(64px, 8vw, 100px)' }}>
+      <div id="brands" style={{ position: 'absolute', top: -80 }} />
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <SectionTitle
           variant="v1"
           tag="Avantages"
@@ -19,8 +20,16 @@ export default function FeaturesV1() {
         />
 
         {/* Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex bg-white rounded-full p-1 shadow-sm border border-gray-100">
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
+          <div
+            style={{
+              display: 'inline-flex',
+              borderRadius: '10px',
+              background: 'rgba(109,40,217,0.08)',
+              padding: '4px',
+              gap: '4px',
+            }}
+          >
             {[
               { key: 'creator', label: 'Créateurs' },
               { key: 'brand', label: 'Marques' },
@@ -28,11 +37,18 @@ export default function FeaturesV1() {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
-                  activeTab === tab.key
-                    ? 'bg-v1-purple text-white shadow-md'
-                    : 'text-gray-600 hover:text-v1-purple'
-                }`}
+                style={{
+                  padding: '8px 20px',
+                  borderRadius: '8px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease',
+                  fontFamily: 'inherit',
+                  background: activeTab === tab.key ? '#6D28D9' : 'transparent',
+                  color: activeTab === tab.key ? '#fff' : '#6B7280',
+                }}
               >
                 {tab.label}
               </button>
@@ -40,17 +56,18 @@ export default function FeaturesV1() {
           </div>
         </div>
 
+        {/* Features Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            initial={{ opacity: 0, y: 20 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3 }}
           >
-            {benefits.map((benefit, i) => (
-              <FeatureCard key={benefit.title} {...benefit} variant="v1" index={i} />
+            {benefits.map((b, i) => (
+              <FeatureCard key={b.title} {...b} variant="v1" index={i} />
             ))}
           </motion.div>
         </AnimatePresence>

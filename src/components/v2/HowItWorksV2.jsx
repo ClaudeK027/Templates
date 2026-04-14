@@ -1,81 +1,63 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import SectionTitle from '../common/SectionTitle';
-import { stepsCreator, stepsBrand } from '../../data/content';
+import { stepsBrand } from '@/data/content';
 
 export default function HowItWorksV2() {
-  const [activeTab, setActiveTab] = useState('brand');
-  const steps = activeTab === 'creator' ? stepsCreator : stepsBrand;
+  const steps = stepsBrand;
 
   return (
-    <section id="how-it-works" className="py-20 lg:py-28 bg-v2-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle
-          variant="v2"
-          tag="Processus"
-          title="Un workflow structuré et transparent."
-          subtitle="De la publication à la livraison, chaque étape est tracée et sécurisée."
-        />
-
-        {/* Tabs */}
-        <div className="flex justify-center mb-14">
-          <div className="inline-flex bg-white rounded-lg p-1 border border-v2-gray-200 shadow-sm">
-            {[
-              { key: 'brand', label: 'Pour les marques' },
-              { key: 'creator', label: 'Pour les créateurs' },
-            ].map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`px-6 py-2.5 rounded-md text-sm font-semibold transition-all duration-300 ${
-                  activeTab === tab.key
-                    ? 'bg-v2-navy text-white shadow-md'
-                    : 'text-v2-gray-600 hover:text-v2-navy'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+    <section id="how-it-works" style={{ paddingTop: 'clamp(80px, 12vw, 160px)', paddingBottom: 'clamp(64px, 8vw, 120px)', paddingLeft: 'clamp(24px, 5vw, 48px)', paddingRight: 'clamp(24px, 5vw, 48px)', background: '#F8FAFC' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        
+        <div style={{ marginBottom: '80px', borderLeft: '4px solid #1E3A5F', paddingLeft: '24px' }}>
+          <h2
+            style={{
+              fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+              fontWeight: 800,
+              fontFamily: "'Inter', sans-serif",
+              color: '#0F172A',
+              margin: '0 0 16px',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            Processus d'intégration.
+          </h2>
+          <p style={{ fontSize: '16px', color: '#64748B', maxWidth: '600px', margin: 0, fontFamily: "'Inter', sans-serif" }}>
+            Déploiement de votre campagne via un pipeline sécurisé et auditable.
+          </p>
         </div>
 
-        {/* Steps — vertical timeline style */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            className="max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-          >
-            {steps.map((step, i) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.step} className="flex gap-6 mb-8 last:mb-0">
-                  {/* Timeline */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-full bg-v2-navy flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-v2-navy/20">
-                      {step.step}
+        {/* Horizontal Pipeline Tech Flowchart */}
+        <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-4 lg:pt-8">
+          
+          {/* Connecting Lines Desktop & Mobile */}
+          <div className="hidden lg:block absolute top-[48px] left-[2rem] right-[2rem] h-[2px] bg-[#E2E8F0] z-0" />
+          <div className="block lg:hidden absolute left-[15px] top-[20px] bottom-[20px] w-[2px] bg-[#E2E8F0] z-0" />
+          
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            
+            return (
+              <div key={step.step} className="flex flex-row lg:flex-col lg:flex-1 relative z-10 gap-6 lg:gap-8 items-start lg:items-start">
+                 {/* Node */}
+                 <div className="flex-shrink-0 relative z-20">
+                   <div className="w-8 h-8 bg-[#1E3A5F] flex items-center justify-center text-xs font-bold text-white font-mono border-4 border-[#F8FAFC] shadow-sm">
+                     {step.step}
+                   </div>
+                 </div>
+                 
+                 {/* Block */}
+                 <div className="flex-1 bg-white border border-[#CBD5E1] rounded" style={{ padding: '24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                      <Icon size={18} color="#1E3A5F" />
+                      <h3 style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', margin: 0, fontFamily: "'Inter', sans-serif" }}>{step.title}</h3>
                     </div>
-                    {i < steps.length - 1 && (
-                      <div className="w-px flex-1 bg-gradient-to-b from-v2-navy/30 to-v2-gray-200 mt-2" />
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="bg-white rounded-xl border border-v2-gray-200 p-6 flex-1 shadow-sm hover:shadow-md transition-shadow duration-300 mb-2">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon size={20} className="text-v2-gold" />
-                      <h3 className="font-bold text-v2-gray-900">{step.title}</h3>
-                    </div>
-                    <p className="text-sm text-v2-gray-600 leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </motion.div>
-        </AnimatePresence>
+                    <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                      {step.description}
+                    </p>
+                 </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

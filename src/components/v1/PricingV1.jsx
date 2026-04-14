@@ -1,21 +1,24 @@
-import SectionTitle from '../common/SectionTitle';
-import PricingCard from '../common/PricingCard';
-import { pricingPlans } from '../../data/content';
+import SectionTitle from '@/components/common/SectionTitle';
+import PricingCard from '@/components/common/PricingCard';
+import { pricingPlans } from '@/data/content';
 
 export default function PricingV1() {
   return (
-    <section id="pricing" className="py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" style={{ background: '#ffffff', padding: 'clamp(64px, 10vw, 120px) clamp(20px, 5vw, 40px) clamp(64px, 8vw, 100px)' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <SectionTitle
           variant="v1"
           tag="Tarifs"
           title="Commencez gratuitement."
           subtitle="Évoluez vers un plan premium quand vous êtes prêt."
         />
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-[1000px] mx-auto items-stretch"
+        >
           {pricingPlans.map((plan, i) => (
-            <PricingCard key={plan.name} plan={plan} variant="v1" index={i} />
+            <div key={plan.name} style={{ height: '100%' }}>
+              <PricingCard plan={plan} variant="v1" index={i} />
+            </div>
           ))}
         </div>
       </div>

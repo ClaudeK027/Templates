@@ -1,16 +1,13 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import Home from './pages/Home';
-import V1Page from './pages/V1Page';
-import V2Page from './pages/V2Page';
-import V3Page from './pages/V3Page';
+import Home from '@/pages/Home';
+import V1Page from '@/pages/V1Page';
+import V2Page from '@/pages/V2Page';
+import V3Page from '@/pages/V3Page';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 }
 

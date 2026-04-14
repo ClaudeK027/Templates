@@ -2,80 +2,47 @@ const footerLinks = {
   Plateforme: ['Créateurs', 'Marques', 'Agences', 'Tarifs'],
   Ressources: ['Comment ça marche', 'FAQ', 'Blog', 'API'],
   Entreprise: ['À propos', 'Carrières', 'Presse', 'Contact'],
-  Légal: ['CGU', 'Confidentialité', 'Cookies', 'Mentions légales'],
+  Légal: ['CGU', 'Confidentialité', 'Cookies'],
 };
 
-const socials = [
-  { label: 'Instagram', letter: 'Ig' },
-  { label: 'YouTube', letter: 'Yt' },
-  { label: 'X', letter: 'X' },
-  { label: 'Facebook', letter: 'Fb' },
-  { label: 'LinkedIn', letter: 'Li' },
-];
-
 export default function Footer({ variant = 'v1' }) {
-  const styles = {
-    v1: {
-      bg: 'bg-v1-black',
-      text: 'text-gray-400',
-      heading: 'text-white',
-      logo: 'text-v1-orange',
-      link: 'hover:text-v1-orange',
-      border: 'border-white/10',
-      social: 'text-gray-500 hover:text-v1-orange',
-    },
-    v2: {
-      bg: 'bg-v2-gray-900',
-      text: 'text-gray-400',
-      heading: 'text-white',
-      logo: 'text-v2-gold',
-      link: 'hover:text-v2-gold',
-      border: 'border-white/10',
-      social: 'text-gray-500 hover:text-v2-gold',
-    },
-    v3: {
-      bg: 'bg-v3-dark',
-      text: 'text-gray-400',
-      heading: 'text-white',
-      logo: 'text-v3-emerald-light',
-      link: 'hover:text-v3-emerald-light',
-      border: 'border-white/10',
-      social: 'text-gray-500 hover:text-v3-emerald-light',
-    },
+  const config = {
+    v1: { bg: '#1C1917', logo: '#F97316', text: '#9CA3AF', heading: '#ffffff', border: 'rgba(255,255,255,0.08)' },
+    v2: { bg: '#111827', logo: '#D4A853', text: '#9CA3AF', heading: '#ffffff', border: 'rgba(255,255,255,0.08)' },
+    v3: { bg: '#0F172A', logo: '#10B981', text: '#9CA3AF', heading: '#ffffff', border: 'rgba(255,255,255,0.08)' },
   };
-
-  const s = styles[variant];
+  const c = config[variant] || config.v1;
 
   return (
-    <footer className={`${s.bg} ${s.text}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Top */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 lg:gap-12">
-          {/* Brand col */}
-          <div className="col-span-2">
-            <span className={`text-2xl font-bold font-poppins ${s.logo}`}>INFLUKA</span>
-            <p className="mt-4 text-sm leading-relaxed max-w-xs">
-              La plateforme panafricaine qui connecte créateurs, influenceurs et marques pour des collaborations à impact.
+    <footer style={{ background: c.bg, color: c.text, padding: 'clamp(60px, 8vw, 100px) clamp(20px, 5vw, 40px) clamp(48px, 6vw, 80px)' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 md:gap-12 mb-16 text-center md:text-left">
+
+          {/* Logo Column */}
+          <div className="col-span-2 md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left" style={{ marginBottom: '8px' }}>
+            <span style={{ fontSize: '24px', fontWeight: 800, fontFamily: "'Poppins', sans-serif", color: c.logo, letterSpacing: '-0.02em' }}>
+              INFLUKA
+            </span>
+            <p style={{ marginTop: '16px', fontSize: '14px', lineHeight: 1.6, maxWidth: '260px' }} className="md:text-left">
+              La plateforme panafricaine de marketing d'influence qui connecte les talents créatifs et les marques.
             </p>
-            <div className="flex gap-4 mt-6">
-              {socials.map(({ label, letter }) => (
-                <a key={label} href="#" aria-label={label} className={`w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold transition-colors duration-200 ${s.social}`}>
-                  {letter}
-                </a>
-              ))}
-            </div>
           </div>
 
-          {/* Link cols */}
+          {/* Links Columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h4 className={`text-sm font-semibold uppercase tracking-wider mb-4 ${s.heading}`}>
+            <div key={title} className="flex flex-col items-center md:items-start">
+              <h4 style={{ fontSize: '12px', fontWeight: 700, color: c.heading, marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                 {title}
               </h4>
-              <ul className="space-y-3">
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className={`text-sm transition-colors duration-200 ${s.link}`}>
+                    <a
+                      href="#"
+                      style={{ fontSize: '14px', color: c.text, textDecoration: 'none', transition: 'color 0.2s' }}
+                      onMouseOver={(e) => (e.currentTarget.style.color = c.logo)}
+                      onMouseOut={(e) => (e.currentTarget.style.color = c.text)}
+                    >
                       {link}
                     </a>
                   </li>
@@ -85,10 +52,9 @@ export default function Footer({ variant = 'v1' }) {
           ))}
         </div>
 
-        {/* Bottom */}
-        <div className={`mt-12 pt-8 border-t ${s.border} flex flex-col sm:flex-row items-center justify-between gap-4`}>
-          <p className="text-xs">© 2026 INFLUKA. Tous droits réservés.</p>
-          <p className="text-xs">Fait avec passion pour l'Afrique 🌍</p>
+        {/* Bottom Bar */}
+        <div style={{ borderTop: `1px solid ${c.border}`, paddingTop: '32px', textAlign: 'center' }}>
+          <p style={{ fontSize: '13px', opacity: 0.8 }}>© 2026 INFLUKA. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

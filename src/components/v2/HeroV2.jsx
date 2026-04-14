@@ -1,168 +1,196 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle } from 'lucide-react';
-import CtaButton from '../common/CtaButton';
-import { heroContent } from '../../data/content';
+import { heroContent } from '@/data/content';
+import { ArrowRight, ShieldCheck, Lock } from 'lucide-react';
 
 export default function HeroV2() {
   const hero = heroContent.v2;
 
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-b from-v2-gray-50 to-white overflow-hidden">
-      {/* Subtle geometric pattern */}
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #1E3A5F 1px, transparent 0)`,
-          backgroundSize: '40px 40px',
-        }}
-      />
-
-      {/* Gold accent line */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-v2-gold to-transparent" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left — Text */}
+    <section style={{ 
+      position: 'relative', 
+      minHeight: 'auto', 
+      display: 'flex', 
+      alignItems: 'center', 
+      background: '#F8FAFC', // Very cold, clean slate-50
+      paddingTop: 'clamp(100px, 12vw, 140px)',
+      paddingRight: 'clamp(24px, 5vw, 48px)',
+      paddingBottom: 'clamp(64px, 8vw, 120px)',
+      paddingLeft: 'clamp(24px, 5vw, 48px)',
+      overflow: 'hidden'
+    }}>
+      <div style={{ maxWidth: '1400px', width: '100%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 items-center">
+          
+          {/* LEFT: Institutional Typography */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-v2-navy/5 text-v2-navy text-xs font-semibold uppercase tracking-wider mb-6 border border-v2-navy/10">
-                <span className="w-2 h-2 rounded-full bg-v2-gold animate-pulse" />
-                Plateforme de confiance
-              </span>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '4px 12px',
+                  background: '#E2E8F0',
+                  borderLeft: '4px solid #1E3A5F',
+                  marginBottom: '24px',
+                  fontFamily: "'Inter', sans-serif"
+                }}
+              >
+                <ShieldCheck size={14} color="#1E3A5F" />
+                <span style={{ fontSize: '11px', fontWeight: 700, color: '#1E3A5F', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Infrastructure Escrow Certifiée
+                </span>
+              </div>
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair leading-[1.15] text-v2-gray-900"
-              initial={{ opacity: 0, y: 30 }}
+              style={{
+                fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+                fontWeight: 800,
+                color: '#0F172A',
+                lineHeight: 1.1,
+                letterSpacing: '-0.03em',
+                margin: '0 0 24px',
+                fontFamily: "'Inter', sans-serif"
+              }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
-              {hero.headline}
-              <br />
-              <span className="text-v2-navy">{hero.subheadline}</span>
+              Le standard institutionnel de l'Influence Marketing.
             </motion.h1>
 
             <motion.p
-              className="mt-6 text-lg text-v2-gray-600 max-w-lg leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
+              style={{ fontSize: '18px', color: '#475569', maxWidth: '480px', lineHeight: 1.6, marginBottom: '40px', fontFamily: "'Inter', sans-serif" }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
-              {hero.description}
+              Pilotez vos budgets, sécurisez vos transactions et analysez vos données via une architecture conçue pour les directions financières.
             </motion.p>
 
             <motion.div
-              className="mt-8 flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 20 }}
+              style={{ display: 'flex', alignItems: 'center', gap: '16px' }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <CtaButton variant="v2" type="primary" size="lg">
-                {hero.ctaBrand} <ArrowRight size={20} className="ml-2" />
-              </CtaButton>
-              <CtaButton variant="v2" type="secondary" size="lg">
-                {hero.ctaCreator}
-              </CtaButton>
-            </motion.div>
-
-            {/* Trust indicators */}
-            <motion.div
-              className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              {['Profils vérifiés', 'Paiement escrow', 'Support 24/7'].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm text-v2-gray-600">
-                  <CheckCircle size={16} className="text-v2-gold" />
-                  {item}
-                </div>
-              ))}
+              <button style={{ 
+                background: '#1E3A5F', 
+                color: '#ffffff', 
+                border: 'none', 
+                padding: '16px 32px', 
+                fontSize: '14px', 
+                fontWeight: 600, 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px', 
+                cursor: 'pointer',
+                borderRadius: '2px', // Sharp corners
+                fontFamily: "'Inter', sans-serif"
+              }}>
+                Prendre rendez-vous <ArrowRight size={16} />
+              </button>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#64748B', fontWeight: 500, fontFamily: "'Inter', sans-serif" }}>
+                <Lock size={12} /> SSO Autorisé
+              </span>
             </motion.div>
           </div>
 
-          {/* Right — Visual */}
-          <motion.div
-            className="relative hidden lg:block"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="relative">
-              {/* Main dashboard mockup */}
-              <div className="bg-white rounded-2xl border border-v2-gray-200 shadow-2xl shadow-v2-navy/10 p-8">
-                {/* Dashboard header */}
-                <div className="flex items-center justify-between mb-8 pb-4 border-b border-v2-gray-100">
-                  <div>
-                    <p className="text-xs text-v2-gray-600 uppercase tracking-wider">Tableau de bord</p>
-                    <h3 className="text-lg font-bold text-v2-gray-900 font-playfair">AfriBeauty Co.</h3>
+          {/* RIGHT: Data Dashboard Interface (Structurally responsive mockup) */}
+          <div className="relative w-full h-[320px] sm:h-[450px] lg:h-[600px] mt-8 lg:mt-0 overflow-hidden lg:overflow-visible flex justify-center lg:block">
+            <motion.div
+               className="origin-top lg:origin-top-right transform scale-[0.5] sm:scale-[0.7] lg:scale-100"
+               style={{ 
+                 position: 'absolute', 
+                 top: '0%', 
+                 lg: { top: '10%' },
+                 width: '700px', 
+                 height: '600px', 
+                 background: '#ffffff', 
+                 border: '1px solid #CBD5E1', 
+                 borderRadius: '4px',
+                 boxShadow: '0 24px 48px rgba(15,23,42,0.05)',
+                 display: 'flex',
+                 flexDirection: 'column',
+                 overflow: 'hidden'
+               }}
+               initial={{ opacity: 0, x: 40 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.7, delay: 0.4, type: 'spring' }}
+            >
+               {/* Terminal Header */}
+               <div style={{ display: 'flex', borderBottom: '1px solid #E2E8F0', padding: '12px 16px', alignItems: 'center', justifyContent: 'space-between', background: '#F8FAFC' }}>
+                 <div style={{ display: 'flex', gap: '24px' }}>
+                   <span style={{ fontSize: '10px', fontWeight: 700, color: '#1E3A5F', letterSpacing: '0.05em' }}>WORKSPACE // ADMIN</span>
+                   <span style={{ fontSize: '10px', fontWeight: 600, color: '#94A3B8' }}>SOC2 COMPLIANT</span>
+                 </div>
+                 <div style={{ width: '40px', height: '16px', background: '#E2E8F0', borderRadius: '2px' }} />
+               </div>
+
+               {/* Dashboard Body */}
+               <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr', flex: 1 }}>
+                  {/* Sidebar */}
+                  <div style={{ borderRight: '1px solid #E2E8F0', padding: '24px 16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                     {[1,2,3,4,5].map(i => (
+                       <div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                         <div style={{ width: '60%', height: '12px', background: i === 1 ? '#1E3A5F' : '#F1F5F9', borderRadius: '2px' }} />
+                         {i === 1 && <div style={{ width: '12px', height: '12px', background: '#10B981', borderRadius: '50%' }} />}
+                       </div>
+                     ))}
                   </div>
-                  <span className="px-3 py-1 rounded-lg bg-v2-navy/5 text-v2-navy text-xs font-semibold border border-v2-navy/10">
-                    Business Plan
-                  </span>
-                </div>
 
-                {/* KPI row */}
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  {[
-                    { label: 'Campagnes actives', value: '12', trend: '+3' },
-                    { label: 'Créateurs engagés', value: '87', trend: '+15' },
-                    { label: 'ROI moyen', value: '340%', trend: '+12%' },
-                  ].map((kpi) => (
-                    <div key={kpi.label} className="bg-v2-gray-50 rounded-xl p-4">
-                      <p className="text-xs text-v2-gray-600">{kpi.label}</p>
-                      <div className="flex items-end gap-2 mt-1">
-                        <span className="text-2xl font-bold text-v2-navy">{kpi.value}</span>
-                        <span className="text-xs text-green-600 font-semibold mb-1">{kpi.trend}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                  {/* Main Data Area */}
+                  <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '24px', background: '#ffffff' }}>
+                     
+                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                       {/* Metric 1 */}
+                       <div style={{ padding: '16px', border: '1px solid #E2E8F0', borderRadius: '2px' }}>
+                         <p style={{ margin: '0 0 8px', fontSize: '10px', color: '#64748B', fontWeight: 600, letterSpacing: '0.05em' }}>FONDS ESCROW ACTIFS</p>
+                         <p style={{ margin: 0, fontSize: '24px', fontWeight: 700, color: '#0F172A', fontFamily: "'JetBrains Mono', monospace" }}>$1.244,500.00</p>
+                         <div style={{ marginTop: '16px', height: '1px', background: '#E2E8F0', width: '100%', position: 'relative' }}>
+                            <div style={{ position: 'absolute', top: 0, left: 0, height: '1px', background: '#10B981', width: '45%' }} />
+                         </div>
+                       </div>
+                       {/* Metric 2 */}
+                       <div style={{ padding: '16px', border: '1px solid #E2E8F0', borderRadius: '2px' }}>
+                         <p style={{ margin: '0 0 8px', fontSize: '10px', color: '#64748B', fontWeight: 600, letterSpacing: '0.05em' }}>ROAS MOYEN / 30J</p>
+                         <p style={{ margin: 0, fontSize: '24px', fontWeight: 700, color: '#10B981', fontFamily: "'JetBrains Mono', monospace" }}>424%</p>
+                         <div style={{ marginTop: '16px', height: '32px', display: 'flex', alignItems: 'flex-end', gap: '4px' }}>
+                            {[30, 50, 40, 80, 60, 100, 90, 85].map((h, i) => (
+                              <div key={i} style={{ flex: 1, height: `${h}%`, background: '#F1F5F9', borderRadius: '1px 1px 0 0' }} />
+                            ))}
+                         </div>
+                       </div>
+                     </div>
 
-                {/* Creator list preview */}
-                <div>
-                  <p className="text-xs text-v2-gray-600 uppercase tracking-wider mb-3">Top créateurs</p>
-                  {[
-                    { name: 'Amina D.', niche: 'Lifestyle', score: '98%', emoji: '👩🏾' },
-                    { name: 'Kwame A.', niche: 'Tech', score: '95%', emoji: '👨🏿' },
-                    { name: 'Fatou M.', niche: 'Mode', score: '93%', emoji: '👩🏽' },
-                  ].map((creator) => (
-                    <div key={creator.name} className="flex items-center justify-between py-2.5 border-b border-v2-gray-100 last:border-0">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">{creator.emoji}</span>
-                        <div>
-                          <p className="text-sm font-semibold text-v2-gray-900">{creator.name}</p>
-                          <p className="text-xs text-v2-gray-600">{creator.niche}</p>
-                        </div>
-                      </div>
-                      <span className="text-sm font-bold text-v2-navy">{creator.score}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Floating badge */}
-              <motion.div
-                className="absolute -top-4 -right-4 bg-v2-gold text-white rounded-xl px-4 py-3 shadow-lg"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <p className="text-xs font-bold">✓ Marque vérifiée</p>
-              </motion.div>
-
-              <motion.div
-                className="absolute -bottom-3 -left-3 bg-white border border-v2-gray-200 rounded-xl px-4 py-3 shadow-lg"
-                animate={{ y: [0, 5, 0] }}
-                transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-              >
-                <p className="text-xs font-bold text-v2-navy">🔒 Escrow activé</p>
-                <p className="text-xs text-v2-gray-600">Paiement sécurisé</p>
-              </motion.div>
-            </div>
-          </motion.div>
+                     {/* Table */}
+                     <div style={{ border: '1px solid #E2E8F0', flex: 1, borderRadius: '2px', display: 'flex', flexDirection: 'column' }}>
+                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1fr 1fr', padding: '12px 16px', borderBottom: '1px solid #E2E8F0', background: '#F8FAFC', fontSize: '10px', fontWeight: 700, color: '#94A3B8' }}>
+                         <span>ID</span>
+                         <span>CONTREPARTIE</span>
+                         <span>STATUT</span>
+                         <span style={{ textAlign: 'right' }}>MONTANT</span>
+                       </div>
+                       {[
+                         { id: 'TRX-892', name: 'Amina K. (C1)', status: 'LOCKED', amount: '$4,500' },
+                         { id: 'TRX-893', name: 'John D. (C2)', status: 'SETTLED', amount: '$12,000' },
+                         { id: 'TRX-894', name: 'AfriBeauty Inc', status: 'PENDING', amount: '$2,800' }
+                       ].map((row, i) => (
+                         <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1fr 1fr', padding: '16px', borderBottom: i === 2 ? 'none' : '1px solid #F1F5F9', fontSize: '12px', alignItems: 'center' }}>
+                           <span style={{ color: '#64748B', fontFamily: "'JetBrains Mono', monospace" }}>{row.id}</span>
+                           <span style={{ fontWeight: 600, color: '#0F172A' }}>{row.name}</span>
+                           <span style={{ color: row.status === 'SETTLED' ? '#10B981' : row.status === 'LOCKED' ? '#F59E0B' : '#94A3B8', fontSize: '10px', fontWeight: 700 }}>{row.status}</span>
+                           <span style={{ textAlign: 'right', fontFamily: "'JetBrains Mono', monospace", fontWeight: i === 1 ? 700 : 400 }}>{row.amount}</span>
+                         </div>
+                       ))}
+                     </div>
+                     
+                  </div>
+               </div>
+            </motion.div>
+          </div>
+          
         </div>
       </div>
     </section>

@@ -1,44 +1,73 @@
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import CtaButton from '../common/CtaButton';
+import { ArrowRight, Terminal } from 'lucide-react';
 
 export default function FinalCtaV2() {
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-v2-gray-50 to-white">
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          className="bg-white rounded-3xl border border-v2-gray-200 shadow-xl shadow-v2-navy/5 p-10 lg:p-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+    <section style={{ paddingTop: 'clamp(64px, 9vw, 120px)', paddingBottom: 'clamp(48px, 6vw, 80px)', paddingLeft: 'clamp(24px, 5vw, 48px)', paddingRight: 'clamp(24px, 5vw, 48px)', background: '#0F172A', position: 'relative' }}>
+      
+      {/* Subtle Grid overlay for that data/server feel */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '40px 40px', zIndex: 0 }} />
+
+      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        
+        <div style={{ width: '64px', height: '64px', background: '#1E3A5F', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 32px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.1)' }}>
+           <Terminal size={32} color="#ffffff" />
+        </div>
+
+        <h2
+          style={{
+            fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+            fontWeight: 800,
+            fontFamily: "'Inter', sans-serif",
+            color: '#ffffff',
+            lineHeight: 1.1,
+            margin: '0 0 24px',
+            letterSpacing: '-0.03em'
+          }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-v2-gold/10 text-v2-gold text-xs font-semibold uppercase tracking-wider mb-6 border border-v2-gold/20">
-            Commencez aujourd'hui
-          </span>
+          Prêt à déployer ?
+        </h2>
+        
+        <p style={{ fontSize: '18px', color: '#94A3B8', maxWidth: '600px', margin: '0 auto 48px', lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+          Initialisez votre environnement en moins de 5 minutes. Auditabilité totale, sécurité maximale.
+        </p>
 
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold font-playfair text-v2-gray-900 leading-tight">
-            Prêt à transformer votre
-            <br />
-            <span className="text-v2-navy">stratégie d'influence ?</span>
-          </h2>
-
-          <p className="mt-6 text-lg text-v2-gray-600 max-w-2xl mx-auto">
-            Rejoignez la plateforme de référence pour le marketing d'influence en Afrique. Inscription gratuite, sans engagement.
-          </p>
-
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <CtaButton variant="v2" type="primary" size="lg">
-              Créer un compte gratuit <ArrowRight size={20} className="ml-2" />
-            </CtaButton>
-            <CtaButton variant="v2" type="secondary" size="lg">
-              Demander une démo
-            </CtaButton>
-          </div>
-
-          <p className="mt-6 text-xs text-v2-gray-600">
-            Aucune carte de crédit requise · Annulation à tout moment
-          </p>
-        </motion.div>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <button className="w-full sm:w-auto" style={{ 
+            background: '#ffffff', 
+            color: '#0F172A', 
+            border: 'none', 
+            padding: '16px 32px', 
+            fontSize: '14px', 
+            fontWeight: 700, 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            gap: '8px', 
+            cursor: 'pointer',
+            borderRadius: '2px',
+            fontFamily: "'Inter', sans-serif"
+          }}>
+            Initialiser la configuration <ArrowRight size={16} />
+          </button>
+          <button className="w-full sm:w-auto" style={{ 
+            background: 'transparent', 
+            color: '#ffffff', 
+            border: '1px solid rgba(255,255,255,0.2)', 
+            padding: '16px 32px', 
+            fontSize: '14px', 
+            fontWeight: 600, 
+            cursor: 'pointer',
+            borderRadius: '2px',
+            fontFamily: "'Inter', sans-serif",
+            transition: 'background 0.2s'
+          }}
+          onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+          onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+          >
+            Contacter un architecte
+          </button>
+        </div>
+        
       </div>
     </section>
   );

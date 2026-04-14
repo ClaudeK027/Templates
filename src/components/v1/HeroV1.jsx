@@ -1,166 +1,219 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
-import CtaButton from '../common/CtaButton';
-import { heroContent } from '../../data/content';
+import { ArrowRight } from 'lucide-react';
+import CtaButton from '@/components/common/CtaButton';
+import { heroContent } from '@/data/content';
 
 export default function HeroV1() {
   const hero = heroContent.v1;
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-v1-black">
-      {/* Background gradient */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-v1-orange/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-v1-purple/20 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-v1-gold/10 rounded-full blur-[80px]" />
-      </div>
+    <section
+      style={{
+        position: 'relative',
+        minHeight: 'auto',
+        display: 'flex',
+        alignItems: 'center',
+        background: '#1C1917',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Ambient glows */}
+      <div style={{ position: 'absolute', top: 0, right: 0, width: '500px', height: '500px', background: 'rgba(249,115,22,0.12)', borderRadius: '50%', filter: 'blur(150px)' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, width: '300px', height: '300px', background: 'rgba(109,40,217,0.12)', borderRadius: '50%', filter: 'blur(120px)' }} />
 
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto', width: '100%', padding: 'clamp(100px, 12vw, 140px) clamp(20px, 5vw, 40px) clamp(60px, 8vw, 100px)' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — Text */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-v1-orange/10 text-v1-orange text-xs font-semibold uppercase tracking-wider mb-6 border border-v1-orange/20">
+          <div className="text-center lg:text-left">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '6px 14px',
+                  borderRadius: '9999px',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#F97316',
+                  background: 'rgba(249,115,22,0.12)',
+                  border: '1px solid rgba(249,115,22,0.2)',
+                  marginBottom: '20px',
+                }}
+              >
                 Plateforme #1 en Afrique
               </span>
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold font-poppins leading-[1.1] text-white"
-              initial={{ opacity: 0, y: 30 }}
+              style={{
+                fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                fontWeight: 800,
+                fontFamily: "'Poppins', sans-serif",
+                lineHeight: 1.1,
+                color: '#ffffff',
+                margin: '0 0 8px',
+              }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               {hero.headline}
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-v1-orange via-v1-gold to-v1-orange">
+              <span style={{ background: 'linear-gradient(135deg, #F97316, #F59E0B)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 {hero.subheadline}
               </span>
             </motion.h1>
 
             <motion.p
-              className="mt-6 text-lg text-gray-400 max-w-lg leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
+              style={{ marginTop: '16px', fontSize: 'clamp(14px, 1.5vw, 16px)', color: '#9CA3AF', maxWidth: '440px', lineHeight: 1.65 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               {hero.description}
             </motion.p>
 
             <motion.div
-              className="mt-8 flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 20 }}
+              style={{ marginTop: 'clamp(24px, 3vw, 32px)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}
+              className="sm:flex-row lg:justify-start"
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <CtaButton variant="v1" type="primary" size="lg">
-                {hero.ctaCreator} <ArrowRight size={20} className="ml-2" />
+              <CtaButton variant="v1" type="primary" size="md" className="w-full sm:w-auto">
+                {hero.ctaCreator} <ArrowRight size={16} />
               </CtaButton>
-              <CtaButton variant="v1" type="secondary" size="lg">
+              <CtaButton variant="v1" type="ghost" size="md" className="w-full sm:w-auto">
                 {hero.ctaBrand}
               </CtaButton>
             </motion.div>
 
-            {/* Social proof mini */}
             <motion.div
-              className="mt-10 flex items-center gap-4"
+              style={{ marginTop: 'clamp(28px, 4vw, 40px)', display: 'flex', alignItems: 'center', gap: '12px', justifyContent: 'center' }}
+              className="lg:justify-start"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <div className="flex -space-x-3">
-                {['👩🏾', '👨🏿', '👩🏽', '👨🏾', '👩🏾‍💼'].map((emoji, i) => (
-                  <span key={i} className="w-10 h-10 rounded-full bg-v1-purple/30 border-2 border-v1-black flex items-center justify-center text-lg">
-                    {emoji}
+              <div style={{ display: 'flex' }}>
+                {['👩🏾', '👨🏿', '👩🏽', '👨🏾'].map((e, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      width: '34px',
+                      height: '34px',
+                      borderRadius: '50%',
+                      background: 'rgba(109,40,217,0.35)',
+                      border: '2px solid #1C1917',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '14px',
+                      marginLeft: i > 0 ? '-8px' : 0,
+                    }}
+                  >
+                    {e}
                   </span>
                 ))}
               </div>
-              <div>
-                <p className="text-white font-semibold text-sm">+10 000 créateurs</p>
-                <p className="text-gray-500 text-xs">nous font déjà confiance</p>
-              </div>
+              <p style={{ color: '#9CA3AF', fontSize: '13px' }}>
+                <span style={{ color: '#fff', fontWeight: 600 }}>+10 000</span> créateurs
+              </p>
             </motion.div>
           </div>
 
-          {/* Right — Visual */}
+          {/* Right — Profile card */}
           <motion.div
-            className="relative hidden lg:block"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="w-full max-w-[450px] mx-auto lg:max-w-none"
           >
-            {/* Simulated dashboard / profile card */}
-            <div className="relative">
-              {/* Main card */}
-              <div className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/10 p-8 shadow-2xl">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-v1-orange to-v1-gold flex items-center justify-center text-3xl">
-                    👩🏾‍🎨
-                  </div>
-                  <div>
-                    <h3 className="text-white font-bold text-lg">Amina Diallo</h3>
-                    <p className="text-gray-400 text-sm">Créatrice lifestyle · Lagos</p>
-                  </div>
-                  <span className="ml-auto px-3 py-1 rounded-full bg-v1-orange/20 text-v1-orange text-xs font-bold">
-                    Vérifié ✓
-                  </span>
+            <div
+              style={{
+                padding: '24px',
+                borderRadius: '16px',
+                background: 'rgba(255,255,255,0.07)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+              }}
+            >
+              {/* Profile header */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px' }}>
+                <div
+                  style={{
+                    width: '50px',
+                    height: '50px',
+                    borderRadius: '14px',
+                    background: 'linear-gradient(135deg, #F97316, #F59E0B)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '26px',
+                  }}
+                >
+                  👩🏾‍🎨
                 </div>
-
-                {/* Stats row */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  {[
-                    { label: 'Abonnés', value: '245K' },
-                    { label: 'Engagement', value: '4.8%' },
-                    { label: 'Missions', value: '32' },
-                  ].map((stat) => (
-                    <div key={stat.label} className="bg-white/5 rounded-xl p-3 text-center">
-                      <p className="text-v1-orange font-bold text-lg">{stat.value}</p>
-                      <p className="text-gray-500 text-xs">{stat.label}</p>
-                    </div>
-                  ))}
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ color: '#fff', fontWeight: 600, fontSize: '15px', margin: 0 }}>Amina Diallo</h3>
+                  <p style={{ color: '#9CA3AF', fontSize: '12px', margin: '2px 0 0' }}>Créatrice lifestyle · Lagos</p>
                 </div>
-
-                {/* Social icons */}
-                <div className="flex gap-3">
-                  {['Instagram', 'TikTok', 'YouTube'].map((net) => (
-                    <span key={net} className="px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 text-xs border border-white/10">
-                      {net}
-                    </span>
-                  ))}
-                </div>
+                <span
+                  style={{
+                    padding: '4px 10px',
+                    borderRadius: '6px',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    color: '#F97316',
+                    background: 'rgba(249,115,22,0.15)',
+                  }}
+                >
+                  VÉRIFIÉ
+                </span>
               </div>
 
-              {/* Floating notification */}
-              <motion.div
-                className="absolute -top-4 -right-4 bg-v1-purple text-white rounded-2xl px-5 py-3 shadow-xl"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <p className="text-xs font-semibold">🎉 Nouvelle mission !</p>
-                <p className="text-xs text-purple-200">AfriBeauty vous invite</p>
-              </motion.div>
+              {/* Stats */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '20px' }}>
+                {[
+                  { label: 'Abonnés', value: '245K' },
+                  { label: 'Engagement', value: '4.8%' },
+                  { label: 'Missions', value: '32' },
+                ].map((s) => (
+                  <div
+                    key={s.label}
+                    style={{
+                      background: 'rgba(255,255,255,0.06)',
+                      borderRadius: '10px',
+                      padding: '14px 12px',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <p style={{ color: '#F97316', fontWeight: 700, fontSize: '16px', margin: 0 }}>{s.value}</p>
+                    <p style={{ color: '#9CA3AF', fontSize: '10px', marginTop: '4px', textTransform: 'uppercase' }}>{s.label}</p>
+                  </div>
+                ))}
+              </div>
 
-              {/* Floating badge */}
-              <motion.div
-                className="absolute -bottom-4 -left-4 bg-v1-gold text-v1-black rounded-2xl px-5 py-3 shadow-xl"
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              >
-                <p className="text-xs font-bold">⭐ Top Créateur</p>
-                <p className="text-xs">Badge débloqué</p>
-              </motion.div>
+              {/* Social tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {['Instagram', 'TikTok', 'YouTube'].map((n) => (
+                  <span
+                    key={n}
+                    style={{
+                      padding: '6px 12px',
+                      borderRadius: '8px',
+                      background: 'rgba(255,255,255,0.06)',
+                      color: '#9CA3AF',
+                      fontSize: '12px',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    {n}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
