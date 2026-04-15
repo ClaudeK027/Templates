@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { v4Missions, v4Hero } from '@/data/contentV4';
+import { MapPin, Tag, Briefcase, ChevronRight, Send } from 'lucide-react';
 
 function MissionCard({ mission, index }) {
   const wa = v4Hero.whatsappBase;
@@ -29,22 +30,24 @@ function MissionCard({ mission, index }) {
     >
       {/* Top: Category + Location */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-        <span style={{
+        <div style={{
           background: `linear-gradient(135deg, ${mission.categoryColor}15, transparent)`,
           border: `1px solid ${mission.categoryColor}30`,
           color: mission.categoryColor,
-          borderRadius: '8px', padding: '6px 14px',
-          fontSize: '11px', fontWeight: 700, letterSpacing: '0.5px'
+          borderRadius: '10px', padding: '6px 14px',
+          fontSize: '11px', fontWeight: 700, letterSpacing: '0.5px',
+          display: 'flex', alignItems: 'center', gap: '6px'
         }}>
-          {mission.category}
-        </span>
-        <span style={{
+          <Tag size={12} /> {mission.category}
+        </div>
+        <div style={{
           background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
           color: '#fff', borderRadius: '999px', padding: '6px 14px',
           fontSize: '10px', fontWeight: 600,
+          display: 'flex', alignItems: 'center', gap: '6px'
         }}>
-          {mission.location}
-        </span>
+          <MapPin size={12} color="#94A3B8" /> {mission.location.replace(/[\uD83C-\uDBFF\uDC00-\uDFFF]+/g, '')}
+        </div>
       </div>
 
       {/* Title */}
@@ -86,32 +89,33 @@ function MissionCard({ mission, index }) {
       {/* Buttons */}
       <div style={{ display: 'flex', gap: '12px' }}>
         <motion.a
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ scale: 1.02, boxShadow: '0 8px 24px rgba(245, 158, 11, 0.4)' }}
           whileTap={{ scale: 0.98 }}
           href={`${wa}Bonjour+INFLUTA+!+Je+suis+intéressé(e)+par+la+mission+${encodeURIComponent(mission.title)}.`}
           target="_blank" rel="noopener noreferrer"
           style={{
-            flex: 1, textAlign: 'center', padding: '12px 16px', borderRadius: '12px',
-            background: '#F59E0B', color: '#0B0F19',
+            flex: 1, textAlign: 'center', padding: '14px 16px', borderRadius: '14px',
+            background: 'linear-gradient(135deg, #F59E0B, #D97706)', color: '#0B0F19',
             fontSize: '13px', fontWeight: 700, textDecoration: 'none',
-            boxShadow: '0 4px 14px rgba(245, 158, 11, 0.3)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
           }}
         >
-          Voir le brief
+          Voir le brief <ChevronRight size={14} />
         </motion.a>
         <motion.a
-          whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
+          whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.3)' }}
           whileTap={{ scale: 0.98 }}
           href={`${wa}Bonjour+INFLUTA+!+Je+veux+candidater+à+la+mission+${encodeURIComponent(mission.title)}.`}
           target="_blank" rel="noopener noreferrer"
           style={{
-            flex: 1, textAlign: 'center', padding: '12px 16px', borderRadius: '12px',
+            flex: 1, textAlign: 'center', padding: '14px 16px', borderRadius: '14px',
             background: 'transparent', color: '#FFFFFF',
-            border: '1px solid rgba(255,255,255,0.15)',
+            border: '1px solid rgba(255,255,255,0.12)',
             fontSize: '13px', fontWeight: 600, textDecoration: 'none',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
           }}
         >
-          Candidater
+          Candidater <Send size={14} />
         </motion.a>
       </div>
     </motion.div>

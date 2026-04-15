@@ -1,4 +1,5 @@
 import { v4Footer, v4Hero } from '@/data/contentV4';
+import { MessageSquare, ExternalLink, ShieldCheck, Mail, Globe, Clock } from 'lucide-react';
 
 export default function FooterV4() {
   const wa = v4Hero.whatsappBase;
@@ -23,23 +24,37 @@ export default function FooterV4() {
 
             {/* Dev Notice */}
             <div style={{
-              background: 'rgba(245,158,11,0.06)',
-              border: '1px solid rgba(245,158,11,0.15)',
-              borderRadius: '12px',
-              padding: '14px',
-              marginBottom: '16px',
+              background: 'linear-gradient(135deg, rgba(245,158,11,0.1), rgba(245,158,11,0.02))',
+              border: '1px solid rgba(245,158,11,0.2)',
+              borderRadius: '16px',
+              padding: '20px',
+              marginBottom: '24px',
+              position: 'relative',
+              overflow: 'hidden',
             }}>
-              <p style={{ fontSize: '12px', color: '#94A3B8', lineHeight: 1.5, margin: 0 }}>
-                🎉 {v4Footer.devNotice}
+              <div style={{
+                position: 'absolute', top: '-20px', right: '-20px',
+                width: '60px', height: '60px',
+                background: 'rgba(245,158,11,0.1)',
+                borderRadius: '50%', filter: 'blur(20px)',
+              }} />
+              <p style={{ fontSize: '12px', color: '#94A3B8', lineHeight: 1.6, margin: 0, display: 'flex', gap: '10px' }}>
+                <Clock size={16} color="#F59E0B" style={{ flexShrink: 0 }} />
+                <span>{v4Footer.devNotice}</span>
               </p>
             </div>
 
             <a
               href={`${wa}Bonjour+INFLUTA+!`}
               target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: '13px', color: '#22C55E', fontWeight: 600, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}
+              style={{ 
+                fontSize: '13px', color: '#22C55E', fontWeight: 700, 
+                textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px',
+                transition: 'all 0.3s ease',
+              }}
+              className="hover:translate-x-1"
             >
-              ◎ Nous contacter sur WhatsApp
+              <MessageSquare size={16} /> Nous contacter sur WhatsApp
             </a>
           </div>
 
@@ -48,9 +63,13 @@ export default function FooterV4() {
             <h4 style={{ fontFamily: "'Syne', sans-serif", fontSize: '11px', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '2px', margin: '0 0 16px' }}>
               Plateforme
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {v4Footer.platformLinks.map((link) => (
-                <a key={link} href="#" style={{ fontSize: '13px', color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                <a key={link} href="#" style={{ 
+                  fontSize: '13px', color: '#94A3B8', textDecoration: 'none', 
+                  transition: 'all 0.3s ease', display: 'flex', alignItems: 'center', gap: '6px' 
+                }} className="hover:text-white group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800 group-hover:bg-orange-500 transition-colors" />
                   {link}
                 </a>
               ))}
@@ -62,9 +81,13 @@ export default function FooterV4() {
             <h4 style={{ fontFamily: "'Syne', sans-serif", fontSize: '11px', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '2px', margin: '0 0 16px' }}>
               Rejoindre
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {v4Footer.joinLinks.map((link) => (
-                <a key={link} href="#" style={{ fontSize: '13px', color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                <a key={link} href="#" style={{ 
+                  fontSize: '13px', color: '#94A3B8', textDecoration: 'none', 
+                  transition: 'all 0.3s ease', display: 'flex', alignItems: 'center', gap: '6px' 
+                }} className="hover:text-white group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800 group-hover:bg-orange-500 transition-colors" />
                   {link}
                 </a>
               ))}
@@ -91,20 +114,24 @@ export default function FooterV4() {
         {/* Bottom Bar */}
         <div style={{
           borderTop: '1px solid rgba(255,255,255,0.06)',
-          paddingTop: '20px',
+          paddingTop: '32px',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          flexWrap: 'wrap', gap: '12px',
+          flexWrap: 'wrap', gap: '16px',
         }}>
-          <p style={{ fontSize: '12px', color: '#475569', margin: 0 }}>
-            © 2026 INFLUTA · La plateforme panafricaine de collaboration entre organisations et talents & influenceurs · influta.africa
+          <p style={{ fontSize: '12px', color: '#64748B', margin: 0, fontWeight: 400 }}>
+            © 2026 INFLUTA · La plateforme panafricaine conçue pour l'Afrique · <span style={{ color: '#F59E0B' }}>influta.africa</span>
           </p>
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: '6px',
-            fontSize: '11px', color: '#F59E0B', fontWeight: 600,
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '10px',
+            padding: '8px 16px', borderRadius: '12px',
+            background: 'rgba(245,158,11,0.05)',
+            border: '1px solid rgba(245,158,11,0.1)',
+            fontSize: '11px', color: '#F59E0B', fontWeight: 700,
             fontFamily: "'Syne', sans-serif",
+            textTransform: 'uppercase', letterSpacing: '1px',
           }}>
-            🎉 En développement · Lancement J-60
-          </span>
+            <Clock size={12} /> Lancement J-60
+          </div>
         </div>
       </div>
     </footer>

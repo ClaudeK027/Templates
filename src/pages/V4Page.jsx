@@ -14,7 +14,8 @@ import BackToSelector from '@/components/common/BackToSelector';
 
 export default function V4Page() {
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", overflowX: 'hidden' }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", overflowX: 'hidden', position: 'relative' }}>
+      <div className="influta-grain-overlay" />
       <NavbarV4 />
       <HeroV4 />
       <AfricaV4 />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4Nav, v4Hero } from '@/data/contentV4';
+import { Globe, Menu, X, ArrowRight } from 'lucide-react';
 
 export default function NavbarV4() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,13 +20,16 @@ export default function NavbarV4() {
         height: '60px',
       }}>
         {/* Logo */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
           <div style={{
-            width: '32px', height: '32px', borderRadius: '50%',
+            width: '36px', height: '36px', borderRadius: '10px',
             background: 'linear-gradient(135deg, #F59E0B, #D97706)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '14px',
-          }}>🌍</div>
+            color: '#FFFFFF',
+            boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)',
+          }}>
+            <Globe size={20} />
+          </div>
           <span style={{
             fontFamily: "'Syne', sans-serif", fontSize: '18px', fontWeight: 800,
             color: '#FFFFFF', letterSpacing: '-0.02em',
@@ -37,9 +41,9 @@ export default function NavbarV4() {
         {/* Desktop Links */}
         <div className="influta-nav-desktop" style={{ alignItems: 'center', gap: '28px' }}>
           {v4Nav.links.map((link) => (
-            <a key={link.label} href={link.href} style={{
-              fontSize: '13px', fontWeight: 500, color: '#94A3B8',
-              textDecoration: 'none', transition: 'color 0.2s',
+            <a key={link.label} href={link.href} className="influta-nav-link hover:text-white" style={{
+              fontSize: '13px', fontWeight: 600, color: '#94A3B8',
+              textDecoration: 'none', transition: 'all 0.3s ease',
               fontFamily: "'Inter', sans-serif",
             }}>
               {link.label}
@@ -53,25 +57,32 @@ export default function NavbarV4() {
             href={`${wa}Bonjour+INFLUTA+!+Je+veux+en+savoir+plus.`}
             target="_blank" rel="noopener noreferrer"
             style={{
-              padding: '8px 18px', borderRadius: '8px',
-              border: '1px solid rgba(255,255,255,0.15)',
+              padding: '10px 20px', borderRadius: '12px',
+              background: 'rgba(255,255,255,0.03)',
+              border: '1px solid rgba(255,255,255,0.08)',
               color: '#FFFFFF', fontSize: '13px', fontWeight: 600,
               textDecoration: 'none', fontFamily: "'Inter', sans-serif",
+              transition: 'all 0.3s ease',
             }}
           >
-            Me connecter
+            Se connecter
           </a>
           <a
             href={`${wa}Bonjour+INFLUTA+!+Je+veux+rejoindre+les+premiers+partenaires.`}
             target="_blank" rel="noopener noreferrer"
+            className="influta-btn-shimmer"
             style={{
-              padding: '8px 18px', borderRadius: '8px',
-              background: '#F59E0B', color: '#0B0F19',
-              fontSize: '13px', fontWeight: 600,
+              padding: '10px 22px', borderRadius: '12px',
+              background: 'linear-gradient(135deg, #F59E0B, #D97706)',
+              color: '#0B0F19',
+              fontSize: '13px', fontWeight: 700,
               textDecoration: 'none', fontFamily: "'Inter', sans-serif",
+              boxShadow: '0 4px 14px rgba(245, 158, 11, 0.2)',
+              transition: 'all 0.3s ease',
+              display: 'flex', alignItems: 'center', gap: '6px',
             }}
           >
-            Devenir partenaire
+            Devenir partenaire <ArrowRight size={14} />
           </a>
         </div>
 
@@ -80,18 +91,12 @@ export default function NavbarV4() {
           className="influta-nav-mobile"
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
-            background: 'none', border: 'none', cursor: 'pointer',
-            flexDirection: 'column', gap: '5px', padding: '8px',
+            background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', 
+            cursor: 'pointer', borderRadius: '10px', padding: '10px',
+            color: '#FFFFFF',
           }}
         >
-          {[0,1,2].map(i => (
-            <span key={i} style={{
-              width: '22px', height: '2px', background: '#FFFFFF', borderRadius: '1px',
-              display: 'block',
-              transition: 'all 0.3s ease',
-              transform: menuOpen ? (i === 0 ? 'rotate(45deg) translateY(7px)' : i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'scaleX(0)') : 'none',
-            }} />
-          ))}
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 

@@ -240,6 +240,57 @@ html {
   background: rgba(255, 255, 255, 0.1) !important;
 }
 
+/* ─── V4 — Premium Grain Texture ─── */
+.influta-grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(120%) brightness(120%);
+}
+
+.influta-nav-link {
+  position: relative;
+}
+
+.influta-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #F59E0B;
+  transition: width 0.3s ease;
+}
+
+.influta-nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Shimmer Animation ─── */
+@keyframes influta-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.influta-btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.influta-btn-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: influta-shimmer 2s infinite;
+}
+
 /* ─── Navbar Responsive Utilities ─── */
 @media (max-width: 768px) {
   .nav-desktop-links {
