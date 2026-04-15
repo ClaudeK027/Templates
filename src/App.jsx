@@ -4,6 +4,7 @@ import Home from '@/pages/Home';
 import V1Page from '@/pages/V1Page';
 import V2Page from '@/pages/V2Page';
 import V3Page from '@/pages/V3Page';
+import V4Page from '@/pages/V4Page';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/v1" element={<V1Page />} />
         <Route path="/v2" element={<V2Page />} />
         <Route path="/v3" element={<V3Page />} />
+        <Route path="/v4" element={<V4Page />} />
       </Routes>
     </BrowserRouter>
   );

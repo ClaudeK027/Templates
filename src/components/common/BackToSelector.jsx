@@ -7,6 +7,7 @@ export default function BackToSelector({ variant = 'v1' }) {
     v1: { bg: '#F97316', shadow: 'rgba(249,115,22,0.35)', color: '#ffffff' },
     v2: { bg: '#1E3A5F', shadow: 'rgba(30,58,95,0.3)', color: '#ffffff' },
     v3: { bg: '#059669', shadow: 'rgba(5,150,105,0.3)', color: '#ffffff' },
+    v4: { bg: '#F59E0B', shadow: 'rgba(245,158,11,0.35)', color: '#0B0F19' },
   };
   const c = config[variant] || config.v1;
 

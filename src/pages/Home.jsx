@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Palette, Shield, Sparkles } from 'lucide-react';
+import { ArrowRight, Palette, Shield, Sparkles, Rocket } from 'lucide-react';
 
 const concepts = [
   {
@@ -39,12 +39,24 @@ const concepts = [
     accentBorder: 'rgba(16, 185, 129, 0.25)',
     glowShadow: '0 8px 40px rgba(16, 185, 129, 0.15), 0 0 80px rgba(16, 185, 129, 0.06)',
   },
+  {
+    id: 'v4',
+    name: 'Direction INFLUTA · Landing Officielle',
+    icon: Rocket,
+    description:
+      'Reproduction fidèle du design de influta.com. Dark mode exclusif, typographie Syne, accent or/ambre et architecture orientée conversion WhatsApp.',
+    tags: ['Dark Mode', 'Or & Ambre', 'WhatsApp-First'],
+    accent: '#F59E0B',
+    accentSoft: 'rgba(245, 158, 11, 0.12)',
+    accentBorder: 'rgba(245, 158, 11, 0.25)',
+    glowShadow: '0 8px 40px rgba(245, 158, 11, 0.15), 0 0 80px rgba(245, 158, 11, 0.06)',
+  },
 ];
 
 /* ─── Card component ─── */
 function ConceptCard({ concept, index }) {
   const Icon = concept.icon;
-  const labels = ['Proposition A', 'Proposition B', 'Proposition C'];
+  const labels = ['Proposition A', 'Proposition B', 'Proposition C', 'Proposition D'];
   return (
     <motion.div
       initial={{ opacity: 0, y: 36 }}
@@ -234,7 +246,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
           >
-            INFLUKA
+            INFLUTA
           </motion.h1>
 
           {/* Subtitle */}
@@ -262,7 +274,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.22 }}
           >
-            Revue de trois propositions d'interfaces pour la plateforme. Chaque concept explore un univers graphique et une structure UX distincte.
+            Revue de quatre propositions d'interfaces pour la plateforme. Chaque concept explore un univers graphique et une structure UX distincte.
           </motion.p>
 
           {/* ── Cards Grid ── */}
@@ -277,7 +289,7 @@ export default function Home() {
       {/* ── Footer ── */}
       <footer style={{ position: 'relative', zIndex: 1, borderTop: '1px solid rgba(255,255,255,0.06)', padding: '28px 0', textAlign: 'center' }}>
         <p style={{ fontSize: '12px', color: '#4B5563', letterSpacing: '0.04em' }}>
-          INFLUKA — Maquettes de présentation · Avril 2026
+          INFLUTA — Maquettes de présentation · Avril 2026
         </p>
       </footer>
     </div>
