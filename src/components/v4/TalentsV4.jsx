@@ -18,12 +18,13 @@ function TalentCard({ talent, index }) {
       transition={{ delay: index * 0.08 }}
       whileHover="hover"
       style={{
-        background: '#111827',
+        background: 'linear-gradient(180deg, #111827 0%, #0B0F19 100%)',
         borderRadius: '24px',
-        border: '1px solid rgba(255,255,255,0.06)',
+        border: '1px solid rgba(255,255,255,0.08)',
         overflow: 'hidden',
         transition: 'all 0.3s ease',
         cursor: 'pointer',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
       }}
       className="influta-talent-card"
     >
@@ -38,12 +39,19 @@ function TalentCard({ talent, index }) {
             borderBottom: '1px solid rgba(255,255,255,0.03)',
           }}
         >
-          {/* Minimalist Empty Profile Photo (SVG) */}
+          {/* Minimalist Empty Profile Photo (SVG in a frame) */}
           <div style={{
             position: 'absolute', inset: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%)',
+            background: 'radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 60%)',
           }}>
+            <div style={{
+              width: '100px', height: '100px', borderRadius: '50%',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
+              border: '1px solid rgba(255,255,255,0.08)',
+              boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02), 0 8px 24px rgba(0,0,0,0.3)',
+            }}>
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -61,6 +69,7 @@ function TalentCard({ talent, index }) {
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
+            </div>
           </div>
         </motion.div>
 
@@ -72,40 +81,44 @@ function TalentCard({ talent, index }) {
 
         {/* Badge top-left */}
         <span style={{
-          position: 'absolute', top: '12px', left: '12px',
-          background: 'rgba(34,197,94,0.9)', color: '#fff',
-          borderRadius: '6px', padding: '4px 10px',
-          fontSize: '10px', fontWeight: 700,
+          position: 'absolute', top: '16px', left: '16px',
+          background: 'rgba(34,197,94,0.15)', color: '#4ADE80',
+          border: '1px solid rgba(34,197,94,0.25)',
+          backdropFilter: 'blur(8px)',
+          borderRadius: '999px', padding: '6px 12px',
+          fontSize: '10px', fontWeight: 700, letterSpacing: '0.5px'
         }}>
           {talent.badge}
         </span>
 
         {/* Country top-right */}
         <span style={{
-          position: 'absolute', top: '12px', right: '12px',
-          background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)',
-          color: '#fff', borderRadius: '6px', padding: '4px 10px',
-          fontSize: '11px', fontWeight: 500,
+          position: 'absolute', top: '16px', right: '16px',
+          background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(8px)',
+          color: '#fff', borderRadius: '999px', padding: '6px 12px',
+          fontSize: '10px', fontWeight: 600,
         }}>
           {talent.country}
         </span>
 
         {/* Name overlay */}
-        <div style={{ position: 'absolute', bottom: '16px', left: '16px' }}>
-          <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '18px', margin: 0, fontFamily: "'Syne', sans-serif" }}>{talent.name}</h3>
-          <p style={{ color: '#94A3B8', fontSize: '12px', margin: '2px 0 0' }}>{talent.handle}</p>
+        <div style={{ position: 'absolute', bottom: '20px', left: '20px' }}>
+          <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '20px', margin: 0, fontFamily: "'Syne', sans-serif", letterSpacing: '-0.02em' }}>{talent.name}</h3>
+          <p style={{ color: '#94A3B8', fontSize: '12px', margin: '4px 0 0', fontWeight: 400 }}>{talent.handle}</p>
         </div>
       </div>
 
       {/* Content */}
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: '24px' }}>
         {/* Niche tags */}
-        <div style={{ display: 'flex', gap: '6px', marginBottom: '12px' }}>
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
           {talent.niches.map((n) => (
             <span key={n} style={{
-              background: `${nicheColors[n] || '#F59E0B'}22`,
+              background: `linear-gradient(135deg, ${nicheColors[n] || '#F59E0B'}15, transparent)`,
+              border: `1px solid ${nicheColors[n] || '#F59E0B'}30`,
               color: nicheColors[n] || '#F59E0B',
-              borderRadius: '6px', padding: '3px 10px',
+              borderRadius: '8px', padding: '4px 12px',
               fontSize: '11px', fontWeight: 600,
             }}>
               {n}
@@ -114,23 +127,23 @@ function TalentCard({ talent, index }) {
         </div>
 
         {/* Bio */}
-        <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.5, marginBottom: '16px', minHeight: '40px' }}>
+        <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, marginBottom: '24px', minHeight: '40px', fontWeight: 300 }}>
           {talent.bio}
         </p>
 
-        {/* Stats row */}
-        <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
-          <div>
-            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '16px', color: '#FFFFFF', margin: 0 }}>{talent.followers}</p>
-            <p style={{ fontSize: '10px', color: '#64748B' }}>abonnés</p>
+        {/* Stats row with encapsulated blocks */}
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>
+          <div style={{ background: 'rgba(0,0,0,0.2)', padding: '12px', borderRadius: '12px', flex: 1, border: '1px solid rgba(255,255,255,0.03)' }}>
+            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '17px', color: '#FFFFFF', margin: 0 }}>{talent.followers}</p>
+            <p style={{ fontSize: '10px', color: '#64748B', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>abonnés</p>
           </div>
-          <div>
-            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '16px', color: '#22C55E', margin: 0 }}>{talent.engagement}</p>
-            <p style={{ fontSize: '10px', color: '#64748B' }}>engagement</p>
+          <div style={{ background: 'rgba(0,0,0,0.2)', padding: '12px', borderRadius: '12px', flex: 1, border: '1px solid rgba(255,255,255,0.03)' }}>
+            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '17px', color: '#22C55E', margin: 0 }}>{talent.engagement}</p>
+            <p style={{ fontSize: '10px', color: '#64748B', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>engmt</p>
           </div>
-          <div>
-            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '16px', color: '#F59E0B', margin: 0 }}>{talent.score}</p>
-            <p style={{ fontSize: '10px', color: '#64748B' }}>score</p>
+          <div style={{ background: 'rgba(0,0,0,0.2)', padding: '12px', borderRadius: '12px', flex: 1, border: '1px solid rgba(255,255,255,0.03)' }}>
+            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '17px', color: '#F59E0B', margin: 0 }}>{talent.score}</p>
+            <p style={{ fontSize: '10px', color: '#64748B', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>score</p>
           </div>
         </div>
 
