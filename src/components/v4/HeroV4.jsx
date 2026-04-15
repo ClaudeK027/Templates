@@ -18,10 +18,14 @@ function CountdownBlock({ value, label }) {
       style={{
       background: 'rgba(11, 15, 25, 0.5)',
       borderRadius: '16px',
-      padding: 'clamp(12px, 2vw, 24px) 0',
+      padding: 'clamp(16px, 2.5vw, 32px) clamp(4px, 1vw, 12px)',
       textAlign: 'center',
       border: '1px solid rgba(255,255,255,0.06)',
       boxShadow: '0 16px 32px rgba(0,0,0,0.2)',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
     }}>
       <p style={{
         fontFamily: "'Syne', sans-serif",
