@@ -270,3 +270,29 @@ html {
   transform: translateY(-3px);
   box-shadow: 0 8px 32px rgba(245, 158, 11, 0.08);
 }
+
+/* ═══════════════════════════════════════════
+   V4 — Navbar Breakpoints (768px = md)
+   ═══════════════════════════════════════════ */
+
+.influta-nav-desktop {
+  display: flex !important;
+}
+.influta-nav-mobile {
+  display: none !important;
+}
+.influta-nav-mobile-menu {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .influta-nav-desktop {
+    display: none !important;
+  }
+  .influta-nav-mobile {
+    display: flex !important;
+  }
+  .influta-nav-mobile-menu {
+    display: flex !important;
+  }
+}

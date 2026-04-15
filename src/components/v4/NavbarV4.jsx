@@ -35,7 +35,7 @@ export default function NavbarV4() {
         </a>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex" style={{ alignItems: 'center', gap: '28px' }}>
+        <div className="influta-nav-desktop" style={{ alignItems: 'center', gap: '28px' }}>
           {v4Nav.links.map((link) => (
             <a key={link.label} href={link.href} style={{
               fontSize: '13px', fontWeight: 500, color: '#94A3B8',
@@ -48,7 +48,7 @@ export default function NavbarV4() {
         </div>
 
         {/* Desktop CTAs */}
-        <div className="hidden md:flex" style={{ alignItems: 'center', gap: '10px' }}>
+        <div className="influta-nav-desktop" style={{ alignItems: 'center', gap: '10px' }}>
           <a
             href={`${wa}Bonjour+INFLUTA+!+Je+veux+en+savoir+plus.`}
             target="_blank" rel="noopener noreferrer"
@@ -77,16 +77,17 @@ export default function NavbarV4() {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden"
+          className="influta-nav-mobile"
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
             background: 'none', border: 'none', cursor: 'pointer',
-            display: 'flex', flexDirection: 'column', gap: '5px', padding: '8px',
+            flexDirection: 'column', gap: '5px', padding: '8px',
           }}
         >
           {[0,1,2].map(i => (
             <span key={i} style={{
               width: '22px', height: '2px', background: '#FFFFFF', borderRadius: '1px',
+              display: 'block',
               transition: 'all 0.3s ease',
               transform: menuOpen ? (i === 0 ? 'rotate(45deg) translateY(7px)' : i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'scaleX(0)') : 'none',
             }} />
@@ -96,11 +97,11 @@ export default function NavbarV4() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden" style={{
+        <div className="influta-nav-mobile-menu" style={{
           background: '#0B0F19',
           borderTop: '1px solid rgba(255,255,255,0.06)',
           padding: '20px clamp(16px, 3vw, 32px)',
-          display: 'flex', flexDirection: 'column', gap: '16px',
+          flexDirection: 'column', gap: '16px',
         }}>
           {v4Nav.links.map((link) => (
             <a key={link.label} href={link.href} onClick={() => setMenuOpen(false)} style={{

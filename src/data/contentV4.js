@@ -2,10 +2,24 @@
 // Terminologie : "Organisations" (pas Marques), "Talents & Influenceurs" (pas Créateurs)
 
 export const v4Hero = {
+  badges: [
+    { label: '🟡 Bêta privée · Lancement officiel bientôt', color: '#F59E0B' },
+    { label: '🟢 Plateforme panafricaine · 15+ pays couverts', color: '#22C55E' },
+  ],
+  titleLine1: 'La plateforme qui connecte',
+  titleLine2: 'organisations & talents africains.',
   eyebrow: '✦ La plateforme qui propulse les talents & influenceurs vers le statut de véritables professionnels',
   description: 'INFLUTA centralise la recherche de talents & influenceurs qualifiés, la publication de missions, les candidatures, les paiements sécurisés et le pilotage des collaborations — entre organisations et talents, en un seul espace conçu pour l\'Afrique.',
   ctaOrg: 'Je suis une organisation',
   ctaTalent: 'Je suis un talent / influenceur',
+  featurePills: [
+    { icon: '✓', label: 'Profils vérifiés' },
+    { icon: '📊', label: 'Stats certifiées' },
+    { icon: '💕', label: 'Missions ciblées' },
+    { icon: '🔒', label: 'Paiement escrow' },
+    { icon: '🌍', label: '15+ pays africains' },
+    { icon: '🚀', label: 'Devenir pro' },
+  ],
   whatsappBase: 'https://wa.me/221781280404?text=',
 };
 
