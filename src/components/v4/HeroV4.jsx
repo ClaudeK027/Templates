@@ -5,19 +5,22 @@ import { v4Hero, v4Launch } from '@/data/contentV4';
 function CountdownBlock({ value, label }) {
   return (
     <div style={{
-      background: '#1E293B',
+      background: '#111827',
       borderRadius: '16px',
-      padding: '20px 28px',
+      padding: '24px',
       textAlign: 'center',
-      minWidth: '90px',
+      width: 'clamp(100px, 15vw, 140px)',
+      border: '1px solid rgba(255,255,255,0.06)',
+      boxShadow: '0 16px 32px rgba(0,0,0,0.2)',
     }}>
       <p style={{
         fontFamily: "'Syne', sans-serif",
-        fontSize: 'clamp(36px, 5vw, 56px)',
+        fontSize: 'clamp(36px, 5vw, 64px)',
         fontWeight: 800,
         color: '#FFFFFF',
         margin: 0,
         lineHeight: 1,
+        fontVariantNumeric: 'tabular-nums',
       }}>{value}</p>
       <p style={{
         fontFamily: "'Syne', sans-serif",
@@ -167,22 +170,23 @@ export default function HeroV4() {
         >
           <h2 style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: 'clamp(22px, 3vw, 32px)',
+            fontSize: 'clamp(32px, 6vw, 64px)',
             fontWeight: 800,
             color: '#FFFFFF',
             letterSpacing: '-0.02em',
-            margin: '0 0 12px',
+            margin: '0 0 16px',
+            lineHeight: 1.1,
           }}>
             {v4Launch.title}
           </h2>
-          <p style={{ fontSize: '14px', color: '#94A3B8', margin: '0 0 40px', fontWeight: 300 }}>
+          <p style={{ fontSize: '14px', color: '#94A3B8', margin: '0 auto 48px', fontWeight: 300, maxWidth: '600px' }}>
             {v4Launch.description}
           </p>
         </motion.div>
 
         {/* Countdown Timer */}
         <motion.div
-          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(8px, 2vw, 16px)', flexWrap: 'wrap', marginBottom: '40px' }}
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(6px, 1vw, 16px)', flexWrap: 'wrap', marginBottom: '48px' }}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.35 }}

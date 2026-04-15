@@ -35,7 +35,7 @@ export default function NavbarV4() {
         </a>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex" style={{ alignItems: 'center', gap: '28px' }}>
+        <div className="hidden md:flex" style={{ alignItems: 'center', gap: '28px' }}>
           {v4Nav.links.map((link) => (
             <a key={link.label} href={link.href} style={{
               fontSize: '13px', fontWeight: 500, color: '#94A3B8',
@@ -48,7 +48,7 @@ export default function NavbarV4() {
         </div>
 
         {/* Desktop CTAs */}
-        <div className="hidden lg:flex" style={{ alignItems: 'center', gap: '10px' }}>
+        <div className="hidden md:flex" style={{ alignItems: 'center', gap: '10px' }}>
           <a
             href={`${wa}Bonjour+INFLUTA+!+Je+veux+en+savoir+plus.`}
             target="_blank" rel="noopener noreferrer"
@@ -77,7 +77,7 @@ export default function NavbarV4() {
 
         {/* Mobile Hamburger */}
         <button
-          className="lg:hidden"
+          className="md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
             background: 'none', border: 'none', cursor: 'pointer',
@@ -96,7 +96,7 @@ export default function NavbarV4() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden" style={{
+        <div className="md:hidden" style={{
           background: '#0B0F19',
           borderTop: '1px solid rgba(255,255,255,0.06)',
           padding: '20px clamp(16px, 3vw, 32px)',
