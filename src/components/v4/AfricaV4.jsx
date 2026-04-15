@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { v4Africa } from '@/data/contentV4';
+import { Globe2, Users, CreditCard, Smartphone, Languages, Zap } from 'lucide-react';
 
 export default function AfricaV4() {
   return (
@@ -34,17 +35,17 @@ export default function AfricaV4() {
 
             {/* Country Tags */}
             <motion.div
-              style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
             >
               {v4Africa.countries.map((c) => (
                 <span key={c} style={{
-                  background: 'rgba(245,158,11,0.12)',
-                  border: '1px solid rgba(245,158,11,0.25)',
-                  borderRadius: '8px',
-                  padding: '5px 12px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: '10px',
+                  padding: '6px 14px',
                   fontSize: '12px',
-                  color: '#F59E0B',
+                  color: '#FFFFFF',
                   fontWeight: 500,
                   fontFamily: "'Syne', sans-serif",
                 }}>
@@ -56,37 +57,65 @@ export default function AfricaV4() {
 
           {/* Right — Stat Cards Grid */}
           <motion.div
-            className="grid grid-cols-2 sm:grid-cols-3 gap-4"
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-5"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
           >
-            {v4Africa.stats.map((s, i) => (
-              <div
-                key={i}
-                className="influta-stat-card"
-                style={{
-                  background: '#1E293B',
-                  borderRadius: '16px',
-                  padding: 'clamp(16px, 2vw, 24px)',
-                  textAlign: 'center',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                  transition: 'all 0.3s ease',
-                  cursor: 'default',
-                }}
-              >
-                <p style={{
-                  fontFamily: "'Syne', sans-serif",
-                  fontWeight: 800,
-                  fontSize: 'clamp(22px, 2.5vw, 28px)',
-                  color: '#F59E0B',
-                  marginBottom: '4px',
-                }}>{s.value}</p>
-                <p style={{
-                  fontSize: '12px',
-                  color: '#94A3B8',
-                  lineHeight: 1.4,
-                }}>{s.label}</p>
-              </div>
-            ))}
+            {v4Africa.stats.map((s, i) => {
+              const icons = {
+                'Pays': <Globe2 size={24} />,
+                'Talents': <Users size={24} />,
+                'Devises': <CreditCard size={24} />,
+                'mobile': <Smartphone size={24} />,
+                'native': <Languages size={24} />,
+                'démarrer': <Zap size={24} />,
+              };
+              const icon = Object.keys(icons).find(key => s.label.toLowerCase().includes(key.toLowerCase()));
+
+              return (
+                <div
+                  key={i}
+                  className="influta-stat-card"
+                  style={{
+                    background: 'linear-gradient(180deg, #111827 0%, #0B0F19 100%)',
+                    borderRadius: '24px',
+                    padding: '32px 24px',
+                    textAlign: 'center',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    transition: 'all 0.4s ease',
+                    cursor: 'default',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <div style={{
+                    color: '#F59E0B',
+                    marginBottom: '16px',
+                    opacity: 0.8
+                  }}>
+                    {icons[icon] || icons['Pays']}
+                  </div>
+                  <p style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontWeight: 800,
+                    fontSize: 'clamp(24px, 3vw, 32px)',
+                    color: '#FFFFFF',
+                    margin: '0 0 8px',
+                    lineHeight: 1,
+                  }}>{s.value}</p>
+                  <p style={{
+                    fontSize: '11px',
+                    color: '#94A3B8',
+                    lineHeight: 1.4,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    fontWeight: 600,
+                  }}>{s.label}</p>
+                </div>
+              );
+            })}
           </motion.div>
         </div>
       </div>
