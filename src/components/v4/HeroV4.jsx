@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { v4Hero, v4Launch } from '@/data/contentV4';
+import { CheckCircle2, BarChart2, Target, ShieldCheck, Globe2, Rocket, Hourglass } from 'lucide-react';
 
 /* ─── WhatsApp Icon SVG ─── */
 const WhatsAppIcon = () => (
@@ -59,6 +60,18 @@ function ColonSep() {
 
 export default function HeroV4() {
   const [time, setTime] = useState({ days: '--', hours: '--', minutes: '--', seconds: '--' });
+
+  const getPillIcon = (label) => {
+    switch (true) {
+      case label.includes('vérifiés'): return <CheckCircle2 size={14} color="#22C55E" />;
+      case label.includes('certifiées'): return <BarChart2 size={14} color="#F59E0B" />;
+      case label.includes('ciblées'): return <Target size={14} color="#EC4899" />;
+      case label.includes('escrow'): return <ShieldCheck size={14} color="#3B82F6" />;
+      case label.includes('pays'): return <Globe2 size={14} color="#06B6D4" />;
+      case label.includes('pro'): return <Rocket size={14} color="#A78BFA" />;
+      default: return null;
+    }
+  };
 
   useEffect(() => {
     const target = new Date(v4Launch.targetDate).getTime();
@@ -223,7 +236,8 @@ export default function HeroV4() {
               color: '#94A3B8',
               fontSize: '11px', fontWeight: 500,
             }} className="influta-mission-card">
-              <span style={{ fontSize: '13px' }}>{p.icon}</span> {p.label}
+              <span style={{ display: 'flex', alignItems: 'center' }}>{getPillIcon(p.label)}</span>
+              {p.label}
             </span>
           ))}
         </motion.div>
@@ -231,8 +245,8 @@ export default function HeroV4() {
 
       {/* ═══ BOTTOM INDICATOR & COUNTDOWN ═══ */}
       <div style={{ padding: '60px 20px 80px', textAlign: 'center', background: 'linear-gradient(180deg, transparent 0%, rgba(11, 15, 25, 0.4) 100%)' }}>
-        <p style={{ fontSize: '11px', color: '#F59E0B', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800, marginBottom: '24px' }}>
-          ⏳ Compte à rebours officiel
+        <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontSize: '11px', color: '#F59E0B', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800, marginBottom: '24px' }}>
+          <Hourglass size={14} /> Compte à rebours officiel
         </p>
         
         {/* Title */}
