@@ -14,11 +14,11 @@ const WhatsAppIcon = () => (
 function CountdownBlock({ value, label }) {
   return (
     <div 
-      className="w-[72px] sm:w-[90px] md:w-[120px]"
+      className="w-[72px] sm:w-[100px] md:w-[140px]"
       style={{
       background: 'rgba(11, 15, 25, 0.5)',
-      borderRadius: '16px',
-      padding: 'clamp(16px, 2.5vw, 32px) clamp(4px, 1vw, 12px)',
+      borderRadius: '24px',
+      padding: 'clamp(20px, 3vw, 40px) clamp(12px, 2vw, 24px)',
       textAlign: 'center',
       border: '1px solid rgba(255,255,255,0.06)',
       boxShadow: '0 16px 32px rgba(0,0,0,0.2)',
