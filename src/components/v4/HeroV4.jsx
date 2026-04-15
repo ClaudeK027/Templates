@@ -13,18 +13,19 @@ const WhatsAppIcon = () => (
 /* ─── Countdown Block ─── */
 function CountdownBlock({ value, label }) {
   return (
-    <div style={{
+    <div 
+      className="w-[72px] sm:w-[90px] md:w-[120px]"
+      style={{
       background: 'rgba(11, 15, 25, 0.5)',
       borderRadius: '16px',
-      padding: '24px 0',
+      padding: 'clamp(12px, 2vw, 24px) 0',
       textAlign: 'center',
-      width: 'clamp(110px, 15vw, 130px)',
       border: '1px solid rgba(255,255,255,0.06)',
       boxShadow: '0 16px 32px rgba(0,0,0,0.2)',
     }}>
       <p style={{
         fontFamily: "'Syne', sans-serif",
-        fontSize: 'clamp(40px, 6vw, 56px)',
+        fontSize: 'clamp(28px, 5vw, 56px)',
         fontWeight: 800,
         fontStyle: 'italic',
         color: '#FFFFFF',
@@ -34,7 +35,7 @@ function CountdownBlock({ value, label }) {
       }}>{value}</p>
       <p style={{
         fontFamily: "'Syne', sans-serif",
-        fontSize: '10px',
+        fontSize: 'clamp(8px, 1.5vw, 10px)',
         fontWeight: 700,
         color: '#64748B',
         textTransform: 'uppercase',
@@ -48,7 +49,7 @@ function CountdownBlock({ value, label }) {
 /* ─── Separator Colon ─── */
 function ColonSep() {
   return (
-    <span style={{
+    <span className="hidden sm:inline-block" style={{
       fontFamily: "'Syne', sans-serif",
       fontSize: '24px',
       fontWeight: 800,

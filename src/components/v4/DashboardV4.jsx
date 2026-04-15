@@ -129,42 +129,43 @@ export default function DashboardV4() {
             </div>
 
             {/* Candidates List */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {candidates.map((c, i) => (
                 <div key={i} style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  padding: '16px 20px',
+                  padding: '12px 14px',
                   background: i === 0 ? 'rgba(255,255,255,0.03)' : 'transparent',
                   border: i === 0 ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent',
                   borderRadius: '16px',
-                  flexWrap: 'wrap', gap: '8px',
+                  gap: '8px',
+                  width: '100%',
+                  overflow: 'hidden'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
                     {/* SVG Avatar Placeholder Replacing Emoji */}
                     <div style={{
-                      width: '40px', height: '40px', borderRadius: '50%',
+                      width: '32px', height: '32px', borderRadius: '50%', flexShrink: 0,
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
                       border: '1px solid rgba(255,255,255,0.08)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02)',
                     }}>
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '20px', height: '20px', color: 'rgba(255,255,255,0.3)' }}>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '16px', height: '16px', color: 'rgba(255,255,255,0.3)' }}>
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                         <circle cx="12" cy="7" r="4" />
                       </svg>
                     </div>
-                    <div>
-                      <p style={{ fontSize: '14px', fontWeight: 600, color: '#FFFFFF', margin: 0 }}>{c.name}</p>
-                      <p style={{ fontSize: '11px', color: '#64748B', margin: '2px 0 0' }}>{c.status}</p>
+                    <div style={{ minWidth: 0 }}>
+                      <p style={{ fontSize: '13px', fontWeight: 600, color: '#FFFFFF', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.name}</p>
+                      <p style={{ fontSize: '10px', color: '#64748B', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.status}</p>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ fontSize: '13px', color: '#94A3B8', fontWeight: 600 }}>{c.match} match</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+                    <span style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 600, whiteSpace: 'nowrap' }}>{c.match}</span>
                     <span style={{
                       background: `linear-gradient(135deg, ${c.badgeColor}15, transparent)`,
                       color: c.badgeColor, border: `1px solid ${c.badgeColor}30`,
-                      borderRadius: '8px', padding: '4px 12px',
-                      fontSize: '10px', fontWeight: 700,
+                      borderRadius: '6px', padding: '2px 8px',
+                      fontSize: '9px', fontWeight: 700, whiteSpace: 'nowrap'
                     }}>
                       {c.badge}
                     </span>
