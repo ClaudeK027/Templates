@@ -41,11 +41,11 @@ const concepts = [
   },
   {
     id: 'v4',
-    name: 'Direction INFLUTA · Landing Officielle',
+    name: 'Direction INFLUTA · Design Premium',
     icon: Rocket,
     description:
-      'Reproduction fidèle du design de influta.com. Dark mode exclusif, typographie Syne, accent or/ambre et architecture orientée conversion WhatsApp.',
-    tags: ['Dark Mode', 'Or & Ambre', 'WhatsApp-First'],
+      'Interface immersive en mode sombre s\'appuyant sur la typographie Syne et des accents ambrés. Design basé sur le Glassmorphism avec des effets de flou et des dégradés profonds pour une expérience haut de gamme.',
+    tags: ['Dark Mode', 'Glassmorphism', 'Syne & Inter'],
     accent: '#F59E0B',
     accentSoft: 'rgba(245, 158, 11, 0.12)',
     accentBorder: 'rgba(245, 158, 11, 0.25)',

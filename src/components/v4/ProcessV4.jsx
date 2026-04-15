@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { v4Process } from '@/data/contentV4';
+import { UserPlus, FileEdit, Zap, Users } from 'lucide-react';
 
 export default function ProcessV4() {
   return (
@@ -25,40 +26,62 @@ export default function ProcessV4() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {v4Process.steps.map((step, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              style={{
-                borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                paddingLeft: i > 0 ? 'clamp(16px, 2vw, 24px)' : '0',
-              }}
-            >
-              <p style={{
-                fontFamily: "'Syne', sans-serif",
-                fontSize: 'clamp(36px, 4vw, 48px)',
-                fontWeight: 800,
-                color: '#F59E0B',
-                margin: '0 0 16px',
-                lineHeight: 1,
-              }}>
-                {step.num}
-              </p>
-              <h3 style={{
-                fontFamily: "'Syne', sans-serif",
-                fontSize: '16px', fontWeight: 700,
-                color: '#FFFFFF', margin: '0 0 10px',
-              }}>
-                {step.title}
-              </h3>
-              <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, fontWeight: 300, margin: 0 }}>
-                {step.desc}
-              </p>
-            </motion.div>
-          ))}
+          {v4Process.steps.map((step, i) => {
+            const icons = {
+              '1': <UserPlus size={24} />,
+              '2': <FileEdit size={24} />,
+              '3': <Zap size={24} />,
+              '4': <Users size={24} />,
+            };
+
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                style={{
+                  background: 'linear-gradient(180deg, #111827 0%, #0B0F19 100%)',
+                  borderRadius: '24px',
+                  padding: '32px 24px',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <div style={{
+                  width: '48px', height: '48px', borderRadius: '12px',
+                  background: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05))',
+                  border: '1px solid rgba(245,158,11,0.25)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: '#F59E0B',
+                  marginBottom: '20px',
+                }}>
+                  {icons[step.num] || <Zap size={24} />}
+                </div>
+                <h3 style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: '17px', fontWeight: 700,
+                  color: '#FFFFFF', margin: '0 0 12px',
+                }}>
+                  {step.title}
+                </h3>
+                <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, fontWeight: 300, margin: 0 }}>
+                  {step.desc}
+                </p>
+                
+                {/* Subtle Step Number in background */}
+                <span style={{
+                  position: 'absolute', top: '20px', right: '24px',
+                  fontSize: '40px', fontWeight: 900, color: 'rgba(255,255,255,0.02)',
+                  fontFamily: "'Syne', sans-serif", pointerEvents: 'none'
+                }}>
+                  0{step.num}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
