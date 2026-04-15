@@ -1,16 +1,28 @@
 import { motion } from 'framer-motion';
 import { v4EarlyAdopters, v4Hero } from '@/data/contentV4';
+import { Sparkles, Building2, CheckCircle2 } from 'lucide-react';
 
-function PartnerCard({ data, emoji, accentColor, ctaText }) {
+function PartnerCard({ data, isTalent, accentColor, ctaText }) {
   const wa = v4Hero.whatsappBase;
   return (
     <div style={{
-      background: '#111827',
-      border: '1px solid rgba(255,255,255,0.06)',
-      borderRadius: '20px',
-      padding: 'clamp(24px, 3vw, 36px)',
+      background: 'linear-gradient(180deg, #111827 0%, #0B0F19 100%)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: '32px',
+      padding: 'clamp(32px, 4vw, 48px)',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+      transition: 'all 0.4s ease',
     }}>
-      <span style={{ fontSize: '32px', display: 'block', marginBottom: '12px' }}>{emoji}</span>
+      <div style={{
+        width: '56px', height: '56px', borderRadius: '16px', marginBottom: '24px',
+        background: `linear-gradient(135deg, ${accentColor}22, rgba(255,255,255,0.02))`,
+        border: `1px solid ${accentColor}33`,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        color: accentColor,
+        boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02)',
+      }}>
+        {isTalent ? <Sparkles size={28} /> : <Building2 size={28} />}
+      </div>
       <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: '18px', fontWeight: 700, color: '#F59E0B', margin: '0 0 10px' }}>
         {data.title}
       </h3>
@@ -18,10 +30,10 @@ function PartnerCard({ data, emoji, accentColor, ctaText }) {
         {data.desc}
       </p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
         {data.benefits.map((b, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: '#22C55E', fontSize: '14px', fontWeight: 700 }}>✓</span>
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <CheckCircle2 size={16} color="#22C55E" style={{ flexShrink: 0 }} />
             <span style={{ fontSize: '13px', color: '#FFFFFF', fontWeight: 400 }}>{b}</span>
           </div>
         ))}
@@ -32,11 +44,11 @@ function PartnerCard({ data, emoji, accentColor, ctaText }) {
         target="_blank" rel="noopener noreferrer"
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-          width: '100%', padding: '14px 24px', borderRadius: '12px',
+          width: '100%', padding: '16px 24px', borderRadius: '16px',
           background: '#22C55E', color: '#FFFFFF',
-          fontSize: '14px', fontWeight: 600, textDecoration: 'none',
-          fontFamily: "'Inter', sans-serif",
-          transition: 'opacity 0.2s ease',
+          fontSize: '14px', fontWeight: 700, textDecoration: 'none',
+          boxShadow: '0 4px 14px rgba(34, 197, 94, 0.3)',
+          transition: 'all 0.3s ease',
         }}
       >
         ◎ {data.title.startsWith('Je suis T') ? 'Je rejoins en tant que talent' : 'Je rejoins en tant que organisation'}
@@ -78,12 +90,12 @@ export default function EarlyAdoptersV4() {
 
             {/* Benefits List */}
             <motion.div
-              style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}
+              style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '36px' }}
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             >
               {v4EarlyAdopters.benefits.map((b, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span style={{ color: '#22C55E', fontSize: '14px', fontWeight: 700 }}>✓</span>
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <CheckCircle2 size={18} color="#22C55E" style={{ flexShrink: 0 }} />
                   <span style={{ fontSize: '14px', color: '#FFFFFF' }}>{b}</span>
                 </div>
               ))}
@@ -131,13 +143,13 @@ export default function EarlyAdoptersV4() {
           >
             <PartnerCard
               data={v4EarlyAdopters.talentCard}
-              emoji="🎨"
+              isTalent={true}
               accentColor="#F59E0B"
               ctaText="Bonjour INFLUTA ! Je suis talent/influenceur(se) et je veux rejoindre les premiers partenaires."
             />
             <PartnerCard
               data={v4EarlyAdopters.orgCard}
-              emoji="🏢"
+              isTalent={false}
               accentColor="#F59E0B"
               ctaText="Bonjour INFLUTA ! Je suis une organisation et je veux rejoindre les premiers partenaires."
             />

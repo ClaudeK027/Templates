@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { v4Trust } from '@/data/contentV4';
+import { Award, BarChart3, TrendingUp, ShieldCheck, Star, Sparkles } from 'lucide-react';
 
 function ScoreBar({ label, value, color }) {
   return (
@@ -23,6 +24,17 @@ function ScoreBar({ label, value, color }) {
 
 export default function TrustV4() {
   const { scoring } = v4Trust;
+
+  const getTrustIcon = (title) => {
+    switch (true) {
+      case title.includes('Badges certifiés'): return <Award size={20} />;
+      case title.includes('Statistiques sociales'): return <BarChart3 size={20} />;
+      case title.includes('Scoring & ranking'): return <TrendingUp size={20} />;
+      case title.includes('Paiements sécurisés'): return <ShieldCheck size={20} />;
+      case title.includes('Avis & réputation'): return <Star size={20} />;
+      default: return <Sparkles size={20} />;
+    }
+  };
 
   return (
     <section id="trust" style={{
@@ -62,14 +74,15 @@ export default function TrustV4() {
                 background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
                 borderRadius: '12px',
               }}>
-                <span style={{
-                  fontSize: '20px', width: '36px', height: '36px',
+                <div style={{
+                  width: '44px', height: '44px', borderRadius: '12px', flexShrink: 0,
+                  background: 'linear-gradient(135deg, rgba(245,158,11,0.15), transparent)',
+                  border: '1px solid rgba(245,158,11,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  background: 'rgba(245,158,11,0.08)', borderRadius: '10px',
-                  flexShrink: 0,
+                  color: '#F59E0B',
                 }}>
-                  {f.icon}
-                </span>
+                  {getTrustIcon(f.title)}
+                </div>
                 <div>
                   <h4 style={{ fontSize: '14px', fontWeight: 700, color: '#FFFFFF', margin: '0 0 4px' }}>{f.title}</h4>
                   <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.5, margin: 0, fontWeight: 300 }}>{f.desc}</p>
@@ -81,10 +94,11 @@ export default function TrustV4() {
           {/* Right — Scoring Visualization */}
           <motion.div
             style={{
-              background: '#111827',
-              border: '1px solid rgba(255,255,255,0.06)',
-              borderRadius: '20px',
-              padding: 'clamp(24px, 3vw, 36px)',
+              background: 'linear-gradient(180deg, #111827 0%, #0B0F19 100%)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '32px',
+              padding: 'clamp(32px, 4vw, 40px)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
             }}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -105,11 +119,13 @@ export default function TrustV4() {
 
             {/* Global Score */}
             <div style={{
-              marginTop: '24px',
-              background: '#1E293B',
-              borderRadius: '16px',
-              padding: '24px',
+              marginTop: '32px',
+              background: 'rgba(0,0,0,0.2)',
+              borderRadius: '20px',
+              padding: '28px',
               textAlign: 'center',
+              border: '1px solid rgba(255,255,255,0.04)',
+              boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02)',
             }}>
               <p style={{
                 fontFamily: "'Syne', sans-serif",
