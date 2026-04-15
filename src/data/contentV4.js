@@ -3,8 +3,8 @@
 
 export const v4Hero = {
   badges: [
-    { label: '🟡 Bêta privée · Lancement officiel bientôt', color: '#F59E0B' },
-    { label: '🟢 Plateforme panafricaine · 15+ pays couverts', color: '#22C55E' },
+    { label: 'Bêta privée · Lancement officiel bientôt', bg: 'rgba(139, 92, 246, 0.15)', color: '#FFFFFF', dot: '#A78BFA' },
+    { label: 'Plateforme panafricaine · 15+ pays couverts', bg: 'rgba(245, 158, 11, 0.15)', color: '#F59E0B', dot: '#F59E0B' },
   ],
   titleLine1: 'La plateforme qui connecte',
   titleLine2: 'organisations & talents africains.',

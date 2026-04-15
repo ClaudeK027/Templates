@@ -1,75 +1,14 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { v4Hero, v4Launch } from '@/data/contentV4';
+import { v4Hero } from '@/data/contentV4';
 
-/* ─── Countdown Block ─── */
-function CountdownBlock({ value, label }) {
-  return (
-    <div style={{
-      background: '#111827',
-      borderRadius: '16px',
-      padding: '20px 0',
-      textAlign: 'center',
-      width: '120px',
-      border: '1px solid rgba(255,255,255,0.06)',
-      boxShadow: '0 16px 32px rgba(0,0,0,0.2)',
-    }}>
-      <p style={{
-        fontFamily: "'Syne', sans-serif",
-        fontSize: '48px',
-        fontWeight: 800,
-        fontStyle: 'italic',
-        color: '#FFFFFF',
-        margin: 0,
-        lineHeight: 1,
-        fontVariantNumeric: 'tabular-nums',
-      }}>{value}</p>
-      <p style={{
-        fontFamily: "'Syne', sans-serif",
-        fontSize: '9px',
-        fontWeight: 700,
-        color: '#64748B',
-        textTransform: 'uppercase',
-        letterSpacing: '2px',
-        margin: '8px 0 0',
-      }}>{label}</p>
-    </div>
-  );
-}
-
-/* ─── Separator Colon ─── */
-function ColonSep() {
-  return (
-    <span style={{
-      fontFamily: "'Syne', sans-serif",
-      fontSize: '36px',
-      fontWeight: 800,
-      color: '#F59E0B',
-      lineHeight: 1,
-    }}>:</span>
-  );
-}
+/* ─── WhatsApp Icon SVG ─── */
+const WhatsAppIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+  </svg>
+);
 
 export default function HeroV4() {
-  const [time, setTime] = useState({ days: '--', hours: '--', minutes: '--', seconds: '--' });
-
-  useEffect(() => {
-    const target = new Date(v4Launch.targetDate).getTime();
-    const tick = () => {
-      const now = Date.now();
-      const diff = Math.max(0, target - now);
-      setTime({
-        days: String(Math.floor(diff / 86400000)).padStart(2, '0'),
-        hours: String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0'),
-        minutes: String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0'),
-        seconds: String(Math.floor((diff % 60000) / 1000)).padStart(2, '0'),
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
-
   const wa = v4Hero.whatsappBase;
 
   return (
@@ -86,7 +25,7 @@ export default function HeroV4() {
           style={{
             position: 'absolute', top: '-10%', left: '50%',
             width: '600px', height: '600px',
-            background: 'radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 60%)',
+            background: 'radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 60%)',
             borderRadius: '50%', filter: 'blur(40px)',
           }}
         />
@@ -96,35 +35,36 @@ export default function HeroV4() {
           style={{
             position: 'absolute', top: '10%', right: '30%',
             width: '500px', height: '500px',
-            background: 'radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 60%)',
+            background: 'radial-gradient(circle, rgba(167,139,250,0.05) 0%, transparent 60%)',
             borderRadius: '50%', filter: 'blur(50px)',
           }}
         />
       </div>
 
-      {/* ═══ HERO PART 1 — Title + CTAs ═══ */}
+      {/* ═══ HERO MAIN ═══ */}
       <div style={{
-        padding: 'clamp(120px, 15vw, 180px) clamp(20px, 5vw, 48px) clamp(60px, 8vw, 100px)',
+        padding: 'clamp(100px, 12vw, 160px) clamp(20px, 5vw, 48px) clamp(40px, 8vw, 80px)',
         textAlign: 'center',
         position: 'relative', zIndex: 1,
-        maxWidth: '900px', margin: '0 auto',
+        maxWidth: '1000px', margin: '0 auto',
       }}>
         {/* Top Badges */}
         <motion.div
-          style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '40px' }}
+          style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '50px' }}
           initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
           {v4Hero.badges.map((b) => (
             <span key={b.label} style={{
-              display: 'inline-flex', alignItems: 'center', gap: '6px',
-              padding: '8px 18px', borderRadius: '9999px',
-              background: `${b.color}15`,
-              border: `1px solid ${b.color}30`,
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              padding: '8px 20px', borderRadius: '9999px',
+              background: b.bg,
+              border: `1px solid rgba(255,255,255,0.05)`,
               color: b.color,
-              fontSize: '12px', fontWeight: 600,
+              fontSize: '11px', fontWeight: 600,
               fontFamily: "'Inter', sans-serif",
             }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: b.dot }}></span>
               {b.label}
             </span>
           ))}
@@ -134,11 +74,10 @@ export default function HeroV4() {
         <motion.h1
           style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: 'clamp(32px, 6vw, 72px)',
+            fontSize: 'clamp(32px, 6vw, 75px)',
             fontWeight: 800,
-            fontStyle: 'italic',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.05,
+            letterSpacing: '-0.01em',
+            lineHeight: 1.1,
             color: '#FFFFFF',
             margin: '0 0 32px',
           }}
@@ -151,7 +90,7 @@ export default function HeroV4() {
 
         {/* Description */}
         <motion.p
-          style={{ fontSize: '14px', color: '#94A3B8', lineHeight: 1.75, maxWidth: '640px', margin: '0 auto 16px', fontWeight: 300 }}
+          style={{ fontSize: '15px', color: '#94A3B8', lineHeight: 1.8, maxWidth: '540px', margin: '0 auto 24px', fontWeight: 300 }}
           initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
@@ -160,7 +99,7 @@ export default function HeroV4() {
 
         {/* Eyebrow */}
         <motion.p
-          style={{ fontSize: '13px', color: '#F59E0B', fontWeight: 500, margin: '0 0 32px' }}
+          style={{ fontSize: '13px', color: '#A78BFA', fontWeight: 600, margin: '0 0 40px' }}
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.25 }}
         >
@@ -169,7 +108,7 @@ export default function HeroV4() {
 
         {/* Dual CTA */}
         <motion.div
-          style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '32px' }}
+          style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap', marginBottom: '50px' }}
           initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
@@ -178,145 +117,57 @@ export default function HeroV4() {
             target="_blank" rel="noopener noreferrer"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '14px 28px', borderRadius: '8px',
+              padding: '16px 32px', borderRadius: '12px',
               background: '#F59E0B', color: '#0B0F19',
               fontSize: '14px', fontWeight: 600, textDecoration: 'none',
               fontFamily: "'Inter', sans-serif",
             }}
           >
-            ◎ {v4Hero.ctaOrg}
+            <WhatsAppIcon /> {v4Hero.ctaOrg}
           </a>
           <a
             href={`${wa}Bonjour+INFLUTA+!+Je+suis+talent/influenceur(se)+et+je+veux+rejoindre+les+premiers+partenaires.`}
             target="_blank" rel="noopener noreferrer"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '14px 28px', borderRadius: '8px',
-              background: 'transparent', color: '#FFFFFF',
-              border: '1px solid rgba(255,255,255,0.15)',
+              padding: '16px 32px', borderRadius: '12px',
+              background: '#1F2937', color: '#FFFFFF',
               fontSize: '14px', fontWeight: 600, textDecoration: 'none',
               fontFamily: "'Inter', sans-serif",
+              border: '1px solid rgba(255,255,255,0.05)',
             }}
           >
-            ◎ {v4Hero.ctaTalent}
+            <WhatsAppIcon /> {v4Hero.ctaTalent}
           </a>
         </motion.div>
 
         {/* Feature Pills */}
         <motion.div
-          style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}
+          style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           {v4Hero.featurePills.map((p) => (
             <span key={p.label} style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
-              padding: '6px 14px', borderRadius: '9999px',
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.08)',
+              padding: '8px 16px', borderRadius: '9999px',
+              background: 'rgba(255,255,255,0.03)',
+              border: '1px solid rgba(255,255,255,0.06)',
               color: '#94A3B8',
-              fontSize: '11px', fontWeight: 400,
-            }}>
-              {p.icon} {p.label}
+              fontSize: '11px', fontWeight: 500,
+            }} className="influta-mission-card">
+              <span style={{ fontSize: '13px' }}>{p.icon}</span> {p.label}
             </span>
           ))}
         </motion.div>
       </div>
 
-      {/* ═══ HERO PART 2 — Countdown ═══ */}
-      <div id="countdown" style={{
-        padding: '0 clamp(20px, 5vw, 48px) clamp(80px, 10vw, 120px)',
-        textAlign: 'center',
-        position: 'relative', zIndex: 1,
-        maxWidth: '800px', margin: '0 auto',
-      }}>
-        {/* Divider line */}
-        <div style={{ width: '60px', height: '2px', background: 'rgba(255,255,255,0.08)', margin: '0 auto 48px', borderRadius: '1px' }} />
-
-        {/* Title */}
-        <motion.h2
-          style={{
-            fontFamily: "'Syne', sans-serif",
-            fontSize: 'clamp(24px, 4vw, 48px)',
-            fontWeight: 800,
-            fontStyle: 'italic',
-            color: '#FFFFFF',
-            letterSpacing: '-0.02em',
-            margin: '0 0 16px',
-            lineHeight: 1.1,
-          }}
-          initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          {v4Launch.title}
-        </motion.h2>
-
-        <motion.p
-          style={{ fontSize: '14px', color: '#94A3B8', margin: '0 auto 40px', fontWeight: 300, maxWidth: '560px' }}
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          {v4Launch.description}
-        </motion.p>
-
-        {/* Countdown — NO wrapping allowed */}
-        <motion.div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '10px',
-            marginBottom: '40px',
-          }}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-        >
-          <CountdownBlock value={time.days} label="Jours" />
-          <ColonSep />
-          <CountdownBlock value={time.hours} label="Heures" />
-          <ColonSep />
-          <CountdownBlock value={time.minutes} label="Minutes" />
-          <ColonSep />
-          <CountdownBlock value={time.seconds} label="Secondes" />
-        </motion.div>
-
-        {/* Bottom CTAs */}
-        <motion.div
-          style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <motion.div
-            animate={{ boxShadow: ['0 0 0 0 rgba(34,197,94,0)', '0 0 0 10px rgba(34,197,94,0.3)', '0 0 0 20px rgba(34,197,94,0)'] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            style={{ borderRadius: '24px' }}
-          >
-            <a
-              href={`${wa}Bonjour+INFLUTA+!+Je+veux+rejoindre+la+liste+des+premiers+partenaires+avant+le+lancement.`}
-              target="_blank" rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                padding: '14px 28px', borderRadius: '24px',
-                background: '#22C55E', color: '#FFFFFF',
-                fontSize: '14px', fontWeight: 600, textDecoration: 'none',
-              }}
-            >
-              ◎ {v4Launch.ctaWhatsapp}
-            </a>
-          </motion.div>
-          <a
-            href="#africa"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '14px 28px', borderRadius: '24px',
-              background: 'transparent', color: '#FFFFFF',
-              border: '1px solid rgba(255,255,255,0.15)',
-              fontSize: '14px', fontWeight: 500, textDecoration: 'none',
-            }}
-          >
-            {v4Launch.ctaDiscover}
-          </a>
-        </motion.div>
+      {/* ═══ BOTTOM INDICATOR ═══ */}
+      <div style={{ padding: '80px 0 60px', textAlign: 'center' }}>
+        <p style={{ fontSize: '11px', color: '#F59E0B', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800 }}>
+          ⏳ Compte à rebours officiel
+        </p>
+        <div style={{ width: '40px', height: '2px', background: 'rgba(245, 158, 11, 0.3)', margin: '16px auto 0' }}></div>
       </div>
     </section>
   );
