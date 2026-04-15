@@ -16,7 +16,7 @@ function TalentCard({ talent, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
-      whileHover="hover"
+      whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(0,0,0,0.4)' }}
       style={{
         background: 'linear-gradient(180deg, #111827 0%, #0B0F19 100%)',
         borderRadius: '24px',
@@ -25,137 +25,102 @@ function TalentCard({ talent, index }) {
         transition: 'all 0.3s ease',
         cursor: 'pointer',
         boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+        aspectRatio: '1 / 1',
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '20px',
+        position: 'relative',
       }}
       className="influta-talent-card"
     >
-      {/* Image placeholder with gradient overlay, fixed to exactly 1:1 square */}
-      <div style={{ aspectRatio: '1 / 1', width: '100%', borderRadius: '24px 24px 0 0', position: 'relative', overflow: 'hidden' }}>
-        <motion.div 
-          variants={{ hover: { scale: 1.05 } }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          style={{
-            position: 'absolute', inset: 0,
-            background: `linear-gradient(135deg, ${nicheColors[talent.niches[0]] || '#F59E0B'}22, #0B0F19)`,
-            borderBottom: '1px solid rgba(255,255,255,0.03)',
-          }}
-        >
-          {/* Minimalist Empty Profile Photo (SVG in a frame) */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 60%)',
-          }}>
-            <div style={{
-              width: '100px', height: '100px', borderRadius: '50%',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02), 0 8px 24px rgba(0,0,0,0.3)',
-            }}>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{
-                width: '90px',
-                height: '90px',
-                color: 'rgba(255, 255, 255, 0.15)',
-                filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))',
-              }}
-            >
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Bottom gradient */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '120px',
-          background: 'linear-gradient(to top, #111827, transparent)',
-        }} />
-
-        {/* Badge top-left */}
+      {/* Top Absolute Badges */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
         <span style={{
-          position: 'absolute', top: '16px', left: '16px',
           background: 'rgba(34,197,94,0.15)', color: '#4ADE80',
           border: '1px solid rgba(34,197,94,0.25)',
-          backdropFilter: 'blur(8px)',
-          borderRadius: '999px', padding: '6px 12px',
-          fontSize: '10px', fontWeight: 700, letterSpacing: '0.5px'
+          borderRadius: '999px', padding: '4px 10px',
+          fontSize: '9px', fontWeight: 700, letterSpacing: '0.5px'
         }}>
           {talent.badge}
         </span>
-
-        {/* Country top-right */}
         <span style={{
-          position: 'absolute', top: '16px', right: '16px',
           background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-          backdropFilter: 'blur(8px)',
-          color: '#fff', borderRadius: '999px', padding: '6px 12px',
-          fontSize: '10px', fontWeight: 600,
+          color: '#fff', borderRadius: '999px', padding: '4px 10px',
+          fontSize: '9px', fontWeight: 600,
         }}>
           {talent.country}
         </span>
+      </div>
 
-        {/* Name overlay */}
-        <div style={{ position: 'absolute', bottom: '20px', left: '20px' }}>
-          <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '20px', margin: 0, fontFamily: "'Syne', sans-serif", letterSpacing: '-0.02em' }}>{talent.name}</h3>
-          <p style={{ color: '#94A3B8', fontSize: '12px', margin: '4px 0 0', fontWeight: 400 }}>{talent.handle}</p>
+      {/* Header: Avatar + Identity */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+        <div style={{
+          width: '52px', height: '52px', borderRadius: '50%', flexShrink: 0,
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
+          border: '1px solid rgba(255,255,255,0.1)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02)',
+        }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '28px', height: '28px', color: 'rgba(255,255,255,0.4)' }}>
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </div>
+        <div>
+          <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '16px', margin: 0, fontFamily: "'Syne', sans-serif", letterSpacing: '-0.02em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{talent.name}</h3>
+          <p style={{ color: '#94A3B8', fontSize: '11px', margin: '2px 0 0', fontWeight: 400 }}>{talent.handle}</p>
         </div>
       </div>
 
-      {/* Content */}
-      <div style={{ padding: '24px' }}>
-        {/* Niche tags */}
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
-          {talent.niches.map((n) => (
-            <span key={n} style={{
-              background: `linear-gradient(135deg, ${nicheColors[n] || '#F59E0B'}15, transparent)`,
-              border: `1px solid ${nicheColors[n] || '#F59E0B'}30`,
-              color: nicheColors[n] || '#F59E0B',
-              borderRadius: '8px', padding: '4px 12px',
-              fontSize: '11px', fontWeight: 600,
-            }}>
-              {n}
-            </span>
-          ))}
+      {/* Niche tags */}
+      <div style={{ display: 'flex', gap: '6px', marginBottom: '12px', flexWrap: 'wrap' }}>
+        {talent.niches.map((n) => (
+          <span key={n} style={{
+            background: `linear-gradient(135deg, ${nicheColors[n] || '#F59E0B'}15, transparent)`,
+            border: `1px solid ${nicheColors[n] || '#F59E0B'}30`,
+            color: nicheColors[n] || '#F59E0B',
+            borderRadius: '6px', padding: '3px 8px',
+            fontSize: '9px', fontWeight: 600,
+          }}>
+            {n}
+          </span>
+        ))}
+      </div>
+
+      {/* Bio */}
+      <p style={{
+        fontSize: '11px', color: '#94A3B8', lineHeight: 1.5,
+        marginBottom: 'auto', fontWeight: 300,
+        display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden'
+      }}>
+        {talent.bio}
+      </p>
+
+      {/* Stats row */}
+      <div style={{ display: 'flex', gap: '6px', marginBottom: '12px', marginTop: '12px' }}>
+        <div style={{ background: 'rgba(0,0,0,0.2)', padding: '8px', borderRadius: '10px', flex: 1, border: '1px solid rgba(255,255,255,0.03)', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '14px', color: '#FFFFFF', margin: 0 }}>{talent.followers}</p>
+          <p style={{ fontSize: '8px', color: '#64748B', margin: '2px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>abonnés</p>
         </div>
-
-        {/* Bio */}
-        <p style={{ fontSize: '13px', color: '#94A3B8', lineHeight: 1.6, marginBottom: '24px', minHeight: '40px', fontWeight: 300 }}>
-          {talent.bio}
-        </p>
-
-        {/* Stats row with encapsulated blocks */}
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>
-          <div style={{ background: 'rgba(0,0,0,0.2)', padding: '12px', borderRadius: '12px', flex: 1, border: '1px solid rgba(255,255,255,0.03)' }}>
-            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '17px', color: '#FFFFFF', margin: 0 }}>{talent.followers}</p>
-            <p style={{ fontSize: '10px', color: '#64748B', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>abonnés</p>
-          </div>
-          <div style={{ background: 'rgba(0,0,0,0.2)', padding: '12px', borderRadius: '12px', flex: 1, border: '1px solid rgba(255,255,255,0.03)' }}>
-            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '17px', color: '#22C55E', margin: 0 }}>{talent.engagement}</p>
-            <p style={{ fontSize: '10px', color: '#64748B', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>engmt</p>
-          </div>
-          <div style={{ background: 'rgba(0,0,0,0.2)', padding: '12px', borderRadius: '12px', flex: 1, border: '1px solid rgba(255,255,255,0.03)' }}>
-            <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '17px', color: '#F59E0B', margin: 0 }}>{talent.score}</p>
-            <p style={{ fontSize: '10px', color: '#64748B', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>score</p>
-          </div>
+        <div style={{ background: 'rgba(0,0,0,0.2)', padding: '8px', borderRadius: '10px', flex: 1, border: '1px solid rgba(255,255,255,0.03)', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '14px', color: '#22C55E', margin: 0 }}>{talent.engagement}</p>
+          <p style={{ fontSize: '8px', color: '#64748B', margin: '2px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>engmt</p>
         </div>
+        <div style={{ background: 'rgba(0,0,0,0.2)', padding: '8px', borderRadius: '10px', flex: 1, border: '1px solid rgba(255,255,255,0.03)', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '14px', color: '#F59E0B', margin: 0 }}>{talent.score}</p>
+          <p style={{ fontSize: '8px', color: '#64748B', margin: '2px 0 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>score</p>
+        </div>
+      </div>
 
-        {/* Tarif */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '12px', position: 'relative', overflow: 'hidden' }}>
-          <p style={{ fontSize: '11px', color: '#64748B', margin: '0 0 4px' }}>Tarif indicatif</p>
-          <motion.p
-            variants={{ hover: { opacity: 0.8, textShadow: '0 0 8px rgba(245, 158, 11, 0.4)' } }}
-            style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: '14px', color: '#F59E0B', margin: 0, transition: 'all 0.3s ease' }}
+      {/* Tarif */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: '9px', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Tarif indicatif</span>
+          <motion.span
+            style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: '12px', color: '#F59E0B', transition: 'all 0.3s ease' }}
           >
-            {talent.tarif}
-          </motion.p>
+            {talent.tarif.split(' ')[0]} - {talent.tarif.split(' ')[2]}
+          </motion.span>
         </div>
       </div>
     </motion.div>
