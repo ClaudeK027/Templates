@@ -35,11 +35,11 @@ export default function DashboardV4() {
         {/* Dashboard Mockup */}
         <motion.div
           style={{
-            background: '#111827',
-            borderRadius: '20px',
-            border: '1px solid rgba(255,255,255,0.06)',
+            background: 'linear-gradient(180deg, #111827 0%, #0B0F19 100%)',
+            borderRadius: '24px',
+            border: '1px solid rgba(255,255,255,0.08)',
             overflow: 'hidden',
-            boxShadow: '0 32px 64px rgba(0,0,0,0.3)',
+            boxShadow: '0 32px 64px rgba(0,0,0,0.4)',
           }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,11 +72,12 @@ export default function DashboardV4() {
                 <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 700, color: '#FFFFFF', margin: 0 }}>{campaign.name}</h3>
               </div>
               <span style={{
-                background: 'rgba(245,158,11,0.12)',
+                background: 'linear-gradient(135deg, rgba(245,158,11,0.15), transparent)',
                 border: '1px solid rgba(245,158,11,0.25)',
-                color: '#F59E0B', borderRadius: '8px',
-                padding: '6px 14px', fontSize: '12px', fontWeight: 700,
+                color: '#F59E0B', borderRadius: '12px',
+                padding: '8px 16px', fontSize: '13px', fontWeight: 800,
                 fontFamily: "'Syne', sans-serif",
+                boxShadow: 'inset 0 2px 8px rgba(255,255,255,0.02)',
               }}>
                 Budget : {campaign.budget}
               </span>
@@ -107,18 +108,23 @@ export default function DashboardV4() {
             </div>
 
             {/* Metrics */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" style={{ marginBottom: '24px' }}>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4" style={{ marginBottom: '32px' }}>
               {metrics.map((m, i) => (
-                <div key={i} style={{
-                  background: '#1E293B', borderRadius: '12px', padding: '16px', textAlign: 'center',
-                  border: '1px solid rgba(255,255,255,0.04)',
-                }}>
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -2 }}
+                  style={{
+                    background: 'rgba(0,0,0,0.2)', borderRadius: '16px', padding: '20px 16px', textAlign: 'center',
+                    border: '1px solid rgba(255,255,255,0.04)',
+                    boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02)',
+                  }}
+                >
                   <p style={{
                     fontFamily: "'Syne', sans-serif", fontWeight: 800,
-                    fontSize: '22px', color: '#F59E0B', margin: '0 0 4px',
+                    fontSize: '26px', color: '#F59E0B', margin: '0 0 6px',
                   }}>{m.value}</p>
-                  <p style={{ fontSize: '11px', color: '#94A3B8' }}>{m.label}</p>
-                </div>
+                  <p style={{ fontSize: '11px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>{m.label}</p>
+                </motion.div>
               ))}
             </div>
 
@@ -127,28 +133,37 @@ export default function DashboardV4() {
               {candidates.map((c, i) => (
                 <div key={i} style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  padding: '14px 16px',
-                  background: i === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
-                  borderRadius: '10px',
+                  padding: '16px 20px',
+                  background: i === 0 ? 'rgba(255,255,255,0.03)' : 'transparent',
+                  border: i === 0 ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent',
+                  borderRadius: '16px',
                   flexWrap: 'wrap', gap: '8px',
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                    {/* SVG Avatar Placeholder Replacing Emoji */}
                     <div style={{
-                      width: '36px', height: '36px', borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #F59E0B33, #1E293B)',
+                      width: '40px', height: '40px', borderRadius: '50%',
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
+                      border: '1px solid rgba(255,255,255,0.08)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '16px',
-                    }}>👩🏾</div>
+                      boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02)',
+                    }}>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '20px', height: '20px', color: 'rgba(255,255,255,0.3)' }}>
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                      </svg>
+                    </div>
                     <div>
                       <p style={{ fontSize: '14px', fontWeight: 600, color: '#FFFFFF', margin: 0 }}>{c.name}</p>
                       <p style={{ fontSize: '11px', color: '#64748B', margin: '2px 0 0' }}>{c.status}</p>
                     </div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ fontSize: '13px', color: '#94A3B8' }}>{c.match} match</span>
+                    <span style={{ fontSize: '13px', color: '#94A3B8', fontWeight: 600 }}>{c.match} match</span>
                     <span style={{
-                      background: `${c.badgeColor}22`, color: c.badgeColor,
-                      borderRadius: '6px', padding: '3px 10px',
+                      background: `linear-gradient(135deg, ${c.badgeColor}15, transparent)`,
+                      color: c.badgeColor, border: `1px solid ${c.badgeColor}30`,
+                      borderRadius: '8px', padding: '4px 12px',
                       fontSize: '10px', fontWeight: 700,
                     }}>
                       {c.badge}

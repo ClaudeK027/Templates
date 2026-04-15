@@ -28,8 +28,8 @@ function TalentCard({ talent, index }) {
       }}
       className="influta-talent-card"
     >
-      {/* Image placeholder with gradient overlay */}
-      <div style={{ height: '260px', borderRadius: '24px 24px 0 0', position: 'relative', overflow: 'hidden' }}>
+      {/* Image placeholder with gradient overlay, fixed to exactly 1:1 square */}
+      <div style={{ aspectRatio: '1 / 1', width: '100%', borderRadius: '24px 24px 0 0', position: 'relative', overflow: 'hidden' }}>
         <motion.div 
           variants={{ hover: { scale: 1.05 } }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
