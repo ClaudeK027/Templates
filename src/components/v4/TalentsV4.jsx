@@ -34,16 +34,33 @@ function TalentCard({ talent, index }) {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           style={{
             position: 'absolute', inset: 0,
-            background: `linear-gradient(135deg, ${nicheColors[talent.niches[0]] || '#F59E0B'}33, #1E293B)`,
+            background: `linear-gradient(135deg, ${nicheColors[talent.niches[0]] || '#F59E0B'}22, #0B0F19)`,
+            borderBottom: '1px solid rgba(255,255,255,0.03)',
           }}
         >
-          {/* Large emoji as placeholder */}
+          {/* Minimalist Empty Profile Photo (SVG) */}
           <div style={{
             position: 'absolute', inset: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '80px', opacity: 0.6,
+            background: 'radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%)',
           }}>
-            👩🏾‍💼
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{
+                width: '90px',
+                height: '90px',
+                color: 'rgba(255, 255, 255, 0.15)',
+                filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.5))',
+              }}
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
           </div>
         </motion.div>
 
